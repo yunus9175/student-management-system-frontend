@@ -38,8 +38,8 @@ const BoxWrapper = ({
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              p: 4,
-              background: Dark00FF(cookies),
+              p: 0,
+              background: Dark00(cookies),
             }}
           >
             <Typography
@@ -64,11 +64,7 @@ const BoxWrapper = ({
               {children}
             </Box>
             {userType === "teacher" && (
-              <Grid
-                container
-                maxWidth="xs"
-                justifyContent={ "center"}
-              >
+              <Grid container maxWidth="xs" justifyContent={"center"}>
                 <Grid item>
                   <LinkComp text={linkText} path={path} cookies={cookies} />
                 </Grid>

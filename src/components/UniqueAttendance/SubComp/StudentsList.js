@@ -57,7 +57,7 @@ const StudentsList = ({ cookies, AttData, id }) => {
       icon={<PeopleOutlineIcon />}
       text={"Students list"}
     >
-      {AttData?.attendance?.length < 0 ? (
+      {AttData?.attendance?.length > 0 ? (
         AttData?.attendance?.map((item, index) => {
           const topColor = item?.attendance ? "#4CAF50" : "#EF5350";
           return (
