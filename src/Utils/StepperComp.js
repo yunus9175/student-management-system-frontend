@@ -41,7 +41,7 @@ const SwipeableTextMobileStepper = () => {
         >
           <img
             src={img}
-            alt="Image"
+            alt={`StudentTracker image ${index}`}
             style={{
               objectFit: "cover", // Fit both width and height within the container
               width: "100%",
