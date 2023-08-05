@@ -58,9 +58,11 @@ const DrawerAppBar = ({
   };
 
   const handleNavigate = () => {
-    if (window.location.pathname !== "/manage-account") {
-      navigate("/manage-account");
-    }
+   if (cookies?.UserType === "Admin") {
+     navigate("/manage-profile");
+   } else {
+     navigate("/manage-account");
+   }
   };
   const removeSearch = () => {
     setUpDown(false);
