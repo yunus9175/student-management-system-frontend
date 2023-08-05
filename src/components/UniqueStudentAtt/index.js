@@ -26,14 +26,14 @@ const UniqueStudentAttendance = () => {
 
   useEffect(() => {
     // Format the start and end dates to "YYYY-MM-DD" for API request
-    const formattedStartDate = startDate.toISOString().split("T")[0];
+    const formattedStartDate = startDate?.toISOString()?.split("T")[0];
     const formattedEndDate = endDate
       ? endDate.toISOString().split("T")[0]
       : formattedStartDate; // Set endDate to startDate if it's null
 
     GET_STUDENT_ATTENDANCE(id, formattedStartDate, formattedEndDate)
       .then((res) => {
-        setStudentAttendance(res.data);
+        setStudentAttendance(res?.data);
       })
       .catch((err) => {
         errorHandler(err?.status, err?.data, dispatch);
@@ -42,8 +42,6 @@ const UniqueStudentAttendance = () => {
 
   const attendanceLengthChecker =
     studentAttendance?.attendanceCounterArray?.length >0
-
-  console.log();
   return (
     <CustomTheme>
       <MiniDrawer>

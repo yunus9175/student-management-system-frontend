@@ -6,7 +6,7 @@ import { Avatar, IconButton, TableCell, tableCellClasses } from "@mui/material";
 import InputBase from "@mui/material/InputBase";
 import Switch from "@mui/material/Switch";
 import { DarkFFF, Light4F, LightBorder } from "./CommonCookies";
-const drawerWidth = 220;
+const drawerWidth = 240;
 
 export const openedMixin = (theme) => ({
   width: drawerWidth,

@@ -3,6 +3,7 @@ import { Button, Dialog, DialogActions, Grid } from "@mui/material";
 import CustomTextField from "../../Utils/CustomTextField";
 import PaperWrapper from "../../Utils/PaperWrapper";
 import CustomMultilineTextField from "../../Utils/CustomMultilineTextField";
+import { IconColor } from "../../Utils/CommonCookies";
 const Reply = ({
   cookies,
   formData,
@@ -59,14 +60,19 @@ const Reply = ({
           </Grid>
         </Grid>
         <DialogActions>
-          <Button
-            variant="contained"
+           <Button
+            variant="text"
             onClick={handleClose}
-            sx={{ pt: 0.5, pb: 0.5 }}
+            sx={{ color: IconColor(cookies) }}
           >
             Cancel
           </Button>
-          <Button type="submit" variant="contained" disabled={loading} sx={{ pt: 0.5, pb: 0.5 }}>
+          <Button
+            type="text"
+            variant="text"
+            disabled={loading}
+            sx={{ color: IconColor(cookies) }}
+          >
             {loading ? "Loading..." : "Submit your reply"}
           </Button>
         </DialogActions>

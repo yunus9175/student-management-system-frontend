@@ -107,7 +107,7 @@ const ManageAttendanceByAdmin = () => {
             filterFlag={filterFlag}
             setFilterFlag={setFilterFlag}
           />
-          {newFilterData.map((item, index) => {
+          {newFilterData?.map((item, index) => {
             return (
               <Box key={index}>
                 <CardSection

@@ -65,7 +65,6 @@ const Contact = ({ Home, cookies }) => {
         dispatch(setLoading(false));
       })
       .catch((err) => {
-        console.log(err)
         errorHandler(err?.status, err?.data, dispatch);
         dispatch(setLoading(false));
       });
