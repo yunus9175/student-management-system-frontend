@@ -6,7 +6,7 @@ import CustomTheme from "./CustomTheme";
 import Header from "./Header";
 import { Grid, Paper, Typography } from "@mui/material";
 import LinkComp from "./LinkComp";
-import { Dark00, Dark00FF } from "./CommonCookies";
+import { Dark00 } from "./CommonCookies";
 const BoxWrapper = ({
   cookies,
   text,
