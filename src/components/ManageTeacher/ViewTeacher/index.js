@@ -19,7 +19,7 @@ import { useParams } from "react-router-dom";
 import { ContainerStyle } from "../../../Utils/stylingMethods";
 
 const ViewTeachers = () => {
-    const loading = useSelector((state) => state.loading);
+  const loading = useSelector((state) => state.loading);
   const { id } = useParams();
   const [cookies] = useCookies(["theme"]);
   const dispatch = useDispatch();
@@ -48,10 +48,6 @@ const ViewTeachers = () => {
   });
 
   useEffect(() => {
-    fetchData();
-  }, [id, dispatch]);
-
-  const fetchData = () => {
     GET_USER(id)
       .then((res) => {
         if (id === res.data._id) {
@@ -79,7 +75,7 @@ const ViewTeachers = () => {
       .catch((err) => {
         errorHandler(err?.status, err?.data, dispatch);
       });
-  };
+  }, [id, dispatch]);
 
   const handleFileInputChange = (e) => {
     let files = e.target.files;

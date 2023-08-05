@@ -41,39 +41,36 @@ const ViewRecords = ({getStudentData }) => {
   const [formData, setFormData] = useState(DataObj);
 
   useEffect(() => {
-    fetchData();
+ GET_STUDENT_BY_ID(id)
+   .then((res) => {
+     if (id === res.data._id) {
+       const data = res?.data;
+       const date = new Date(data.dob);
+       const formattedDate = date.toISOString().substring(0, 10);
+       setFormData({
+         fullName: data.fullName,
+         email: data.email,
+         phone: data.phone,
+         dob: formattedDate,
+         gender: data.gender,
+         course: data.course,
+         courseYear: data.courseYear,
+         address: data.address,
+         city: data.city,
+         pinCode: data.pinCode,
+         state: data.state,
+         country: data.country,
+         role: data.role,
+       });
+       setSelectedFile(data.profileImage);
+       setActive(data.active);
+     }
+   })
+   .catch((err) => {
+     errorHandler(err?.status, err?.data, dispatch);
+   });
   }, [id, dispatch]);
 
-  const fetchData = () => {
-    GET_STUDENT_BY_ID(id)
-      .then((res) => {
-        if (id === res.data._id) {
-          const data = res?.data;
-          const date = new Date(data.dob);
-          const formattedDate = date.toISOString().substring(0, 10);
-          setFormData({
-            fullName: data.fullName,
-            email: data.email,
-            phone: data.phone,
-            dob: formattedDate,
-            gender: data.gender,
-            course: data.course,
-            courseYear: data.courseYear,
-            address: data.address,
-            city: data.city,
-            pinCode: data.pinCode,
-            state: data.state,
-            country: data.country,
-            role: data.role,
-          });
-          setSelectedFile(data.profileImage);
-          setActive(data.active);
-        }
-      })
-      .catch((err) => {
-        errorHandler(err?.status, err?.data, dispatch);
-      });
-  };
 
   const handleFileInputChange = (e) => {
     let files = e.target.files;

@@ -80,7 +80,7 @@ const AttendanceIndex = () => {
         setLoading(false);
         errorHandler(err?.status, err?.data, dispatch);
       });
-  }, [cookies, userData, dispatch, value, formattedDate, status]);
+  }, [cookies, userData, dispatch, value, formattedDate, status, isAdmin]);
   const getAttendance = () => {
     setLoading(false);
     GET_ATTENDANCE()
@@ -111,8 +111,34 @@ const AttendanceIndex = () => {
       });
   };
   useEffect(() => {
-    getAttendance();
-  }, [cookies, userData, dispatch, value, formattedDate]);
+    setLoading(false);
+    GET_ATTENDANCE()
+      .then((res) => {
+        setAttData(res.data.filter((i) => i.active === true));
+        const matchingAttendance = res.data.find(
+          (i) =>
+            i?.course === userData?.course &&
+            i?.courseYear === userData?.courseYear &&
+            i?.date === formattedDate
+        );
+        if (matchingAttendance) {
+          let Name = allUsers.filter(
+            (i) => i._id === matchingAttendance?.takenByTeacher_id
+          );
+          setFullName(
+            `Attendance already taken by ${Name ? "You" : Name[0].fullName}.`
+          );
+          setStatus(true);
+        } else {
+          setStatus(false);
+        }
+      })
+      .catch((err) => {
+        setLoading(false);
+        setStatus(false);
+        errorHandler(err?.status, err?.data, dispatch);
+      });
+  }, [cookies, userData, dispatch, value, formattedDate, allUsers]);
 
   return (
     <CustomTheme>

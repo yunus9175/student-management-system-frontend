@@ -69,11 +69,20 @@ const MiniDrawer = ({ children, setQuery, query, data, value }) => {
           severity: "error",
         })
       );
-      logoutFn();
+      const pastDate = new Date(0);
+      removeCookie("loggedIn", { expires: pastDate });
+      removeCookie("UserId", { expires: pastDate });
+      removeCookie("UserType", { expires: pastDate });
+      dispatch(
+        fetchData({
+          userData: {},
+        })
+      );
+      navigate("/");
     }, 3600000); // 1 hour in milliseconds
 
     return () => clearTimeout(timeout);
-  }, []);
+  }, [dispatch, navigate, removeCookie]);
 
   useEffect(() => {
     if (!userData?._id) {
@@ -89,7 +98,16 @@ const MiniDrawer = ({ children, setQuery, query, data, value }) => {
         })
         .catch((err) => {
           if (err?.status === 404) {
-            logoutFn();
+            const pastDate = new Date(0);
+            removeCookie("loggedIn", { expires: pastDate });
+            removeCookie("UserId", { expires: pastDate });
+            removeCookie("UserType", { expires: pastDate });
+            dispatch(
+              fetchData({
+                userData: {},
+              })
+            );
+            navigate("/");
           }
           setLoading(false);
           errorHandler(err?.status, err?.data, dispatch);
@@ -97,7 +115,7 @@ const MiniDrawer = ({ children, setQuery, query, data, value }) => {
     } else {
       setLoading(false);
     }
-  }, [dispatch, cookies.UserId, userData]);
+  }, [dispatch, cookies.UserId, userData, navigate,removeCookie]);
 
   useEffect(() => {
     if (matches) {

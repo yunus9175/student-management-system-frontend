@@ -29,7 +29,7 @@ const SwipeableTextMobileStepper = () => {
       swipeable={true}
       style={{ height: "100%" }}
     >
-      {images.map((img, index) => (
+      {images.map((image, index) => (
         <Box
           key={index}
           sx={{
@@ -40,8 +40,8 @@ const SwipeableTextMobileStepper = () => {
           }}
         >
           <img
-            src={img}
-            alt={`StudentTracker image ${index}`}
+            src={image}
+            alt={`StudentTracker ${index}`}
             style={{
               objectFit: "cover", // Fit both width and height within the container
               width: "100%",

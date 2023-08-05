@@ -50,7 +50,13 @@ const ViewMessage = () => {
   };
 
   useEffect(() => {
-    getStudentComment();
+  GET_COMMENTS()
+    .then((res) => {
+      setData(res.data);
+    })
+    .catch((err) => {
+      errorHandler(err?.status, err?.data, dispatch);
+    });
   }, [dispatch]);
 
   const handleClose = () => {
