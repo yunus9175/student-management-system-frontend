@@ -1,4 +1,4 @@
-import React,{memo} from "react";
+import React, { memo } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -38,7 +38,7 @@ const BoxWrapper = ({
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              p: 0,
+              // p: 2,
               background: Dark00(cookies),
             }}
           >

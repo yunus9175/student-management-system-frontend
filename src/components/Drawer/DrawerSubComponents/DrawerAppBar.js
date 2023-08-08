@@ -34,14 +34,12 @@ const DrawerAppBar = ({
   cookies,
   value,
 }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const MenuOpen = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+
+  const toggleDrawer = () => {
+    setDrawerOpen(!drawerOpen);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  
   const searchCondition = () => {
     if (
       [
@@ -69,11 +67,11 @@ const DrawerAppBar = ({
     setQuery("");
   };
 
-  useEffect(() => {
-    if (matches) {
-      handleClose();
-    }
-  }, [matches]);
+    useEffect(() => {
+      if (matches) {
+       setDrawerOpen(false);
+      }
+    }, [matches]);
 
   return (
     <AppBar position="fixed" open={open} sx={styles.appBar}>
@@ -90,7 +88,7 @@ const DrawerAppBar = ({
         )}
         <Box sx={styles.innerBox3}>
           <Typography variant="h6" noWrap component="div" sx={styles.titleTypo}>
-            StudentTracker
+            StudentsTracker
           </Typography>
           <Box sx={styles.childBox1}>
             {matches &&
@@ -137,15 +135,15 @@ const DrawerAppBar = ({
                 </IconButton>
               </Tooltip>
             )}
-            {matches && <ModeComp/>}
+            {matches && <ModeComp />}
             {!matches && (
               <IconButton
                 aria-label="menu"
-                onClick={handleClick}
+                onClick={toggleDrawer}
                 size="small"
-                aria-controls={MenuOpen ? "account-menu" : undefined}
+                aria-controls={open ? "account-menu" : undefined}
                 aria-haspopup="true"
-                aria-expanded={MenuOpen ? "true" : undefined}
+                aria-expanded={open ? "true" : undefined}
               >
                 <MenuIcon sx={styles.toolbarIconBtnAvatar} />
               </IconButton>
@@ -153,30 +151,26 @@ const DrawerAppBar = ({
           </Box>
         </Box>
       </Toolbar>
-      {!matches &&
-        upDown &&
-        data?.length > 0 &&
-        value === 1 && (
-          <Box sx={styles.searchToolbar}>
-            {searchCondition() && (
-              <SearchAppBar
-                setQuery={setQuery}
-                query={query}
-                matches={matches}
-                cookies={cookies}
-              />
-            )}
-            <Tooltip title="Close search" placement="bottom">
-              <IconButton onClick={() => removeSearch()}>
-                <ClearIcon sx={styles.searchIcon} />
-              </IconButton>
-            </Tooltip>
-          </Box>
-        )}
+      {!matches && upDown && data?.length > 0 && value === 1 && (
+        <Box sx={styles.searchToolbar}>
+          {searchCondition() && (
+            <SearchAppBar
+              setQuery={setQuery}
+              query={query}
+              matches={matches}
+              cookies={cookies}
+            />
+          )}
+          <Tooltip title="Close search" placement="bottom">
+            <IconButton onClick={() => removeSearch()}>
+              <ClearIcon sx={styles.searchIcon} />
+            </IconButton>
+          </Tooltip>
+        </Box>
+      )}
       <AfterLoginMenuBody
-        anchorEl={anchorEl}
-        open={MenuOpen}
-        handleClose={handleClose}
+        open={drawerOpen}
+        toggleDrawer={toggleDrawer}
         icon={icon}
         logoutFn={logoutFn}
         dialogOpen={dialogOpen}

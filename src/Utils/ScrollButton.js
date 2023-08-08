@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Fab from "@mui/material/Fab";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { gradientBackground } from "./stylingMethods";
 
 function ScrollButton() {
   const [isVisible, setIsVisible] = useState(false);
@@ -31,7 +32,7 @@ function ScrollButton() {
     bottom: "20px",
     right: "20px",
     borderRadius: "50%",
-    background: "radial-gradient(circle at center, #1976D2 , #292929)",
+    background:gradientBackground("#1976D2"),
     color: "white",
     width: "50px",
     height: "50px",

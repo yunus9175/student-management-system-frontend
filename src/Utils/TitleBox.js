@@ -6,6 +6,7 @@ import ExcelExport from "./ExcelExport";
 import { useSelector } from "react-redux";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
+import { gradientBackground } from "./stylingMethods";
 const TitleBox = ({ icon, text, data, fileName, id }) => {
   const { userData } = useSelector((state) => state.getUserProfile);
   const [cookies] = useCookies(["theme"]);
@@ -105,7 +106,8 @@ const TitleBox = ({ icon, text, data, fileName, id }) => {
               sx={{
                 textTransform: "capitalize",
                 color: cookies.theme === "dark" ? "#fff" : "#1976D2",
-                background: cookies.theme === "dark" && "#1976D2",
+                background:
+                  cookies.theme === "dark" && gradientBackground("#1976D2"),
               }}
               onClick={() => BackFunction()}
             >

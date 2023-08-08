@@ -9,6 +9,7 @@ import { errorHandler } from "../../../ApiFunctions/ErrorHandler";
 import Fab from "@mui/material/Fab";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import FilterAltOffIcon from "@mui/icons-material/FilterAltOff";
+import { gradientBackground } from "../../../Utils/stylingMethods";
 const FilterSection = ({
   cookies,
   formData,
@@ -43,7 +44,7 @@ const FilterSection = ({
     top: "140px",
     right: "40px",
     borderRadius: "50%",
-    background: "radial-gradient(circle at center, #1976D2 , #292929)",
+    background:gradientBackground("#1976D2"),
     color: "white",
     width: "40px",
     height: "40px",

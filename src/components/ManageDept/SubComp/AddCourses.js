@@ -3,7 +3,8 @@ import { Button, Dialog, DialogActions, Grid } from "@mui/material";
 import CustomTextField from "../../../Utils/CustomTextField";
 import PaperWrapper from "../../../Utils/PaperWrapper";
 import CustomDropDown from "../../../Utils/CustomDropDown";
-import { IconColor } from "../../../Utils/CommonCookies";
+import { LoadingButton } from "@mui/lab";
+import { gradientBackground } from "../../../Utils/stylingMethods";
 const AddCourses = ({
   cookies,
   formData,
@@ -62,20 +63,39 @@ const AddCourses = ({
         </Grid>
         <DialogActions>
           <Button
-            variant="text"
+            variant="contained"
             onClick={handleClose}
-            sx={{ color: IconColor(cookies) }}
+            sx={{
+              background: gradientBackground("#DC143C"),
+              color: "#fff",
+              borderColor: "#fff",
+              ":hover": {
+                color: "#fff",
+                borderColor: "#fff",
+                background: gradientBackground("#DC143C"),
+              },
+            }}
           >
             Cancel
           </Button>
-          <Button
-            type="text"
-            variant="text"
+          <LoadingButton
+            type="submit"
+            variant={"contained"}
+            sx={{
+              background: gradientBackground("#1976D2"),
+              color: "#fff",
+              borderColor: "#fff",
+              ":hover": {
+                color: "#fff",
+                borderColor: "#fff",
+                background: gradientBackground("#1976D2"),
+              }
+            }}
             disabled={loading}
-            sx={{ color: IconColor(cookies) }}
+            loading={loading}
           >
-            {loading ? "Loading..." : courseCondition}
-          </Button>
+            <span> {courseCondition}</span>
+          </LoadingButton>
         </DialogActions>
       </PaperWrapper>
     </Dialog>

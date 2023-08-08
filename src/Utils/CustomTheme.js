@@ -14,6 +14,18 @@ import {
 const CustomTheme = ({ children }) => {
   const [cookies] = useCookies(["theme"]);
 
+  const path = ["/sign_in", "/forgot-password", "/reset-password"].includes(
+    window.location.pathname
+  );
+
+  const dark = cookies.theme === "dark";
+
+  const colorCondition = () => {
+    if (path && dark) {
+      return "#D3D3D3 ";
+    }
+  };
+
   const theme = createTheme({
     palette: {
       primary: {
@@ -32,18 +44,18 @@ const CustomTheme = ({ children }) => {
           root: {
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
-                color: Dark4F29(cookies),
-                borderColor: Dark4F29(cookies), // change border color
+                color: colorCondition(),
+                borderColor: colorCondition(), // change border color
               },
             },
             "& .MuiOutlinedInput-root.Mui-disabled": {
               "& fieldset": {
-                color: Dark4F29(cookies),
-                borderColor: Dark4F29(cookies), // change border color
+                color: colorCondition(),
+                borderColor: colorCondition(), // change border color
               },
             },
             "& .MuiOutlinedInput-root:hover fieldset": {
-              borderColor: Dark4F29(cookies),
+              borderColor: colorCondition(),
             },
             "& .MuiOutlinedInput-root.Mui-disabled:hover fieldset": {
               borderColor: DarkFFF(cookies),
@@ -72,12 +84,12 @@ const CustomTheme = ({ children }) => {
           root: {
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
-                color: Dark4F29(cookies),
-                borderColor: Dark4F29(cookies), // change border color
+                color: colorCondition(),
+                borderColor: colorCondition(), // change border color
               },
             },
             "& .MuiOutlinedInput-root:hover fieldset": {
-              borderColor: Dark4F29(cookies),
+              borderColor: colorCondition(),
             },
             "& .MuiOutlinedInput-input": {
               color: DarkFF4F(cookies),

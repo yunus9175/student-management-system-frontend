@@ -2,7 +2,7 @@ import React, { useState, memo } from "react";
 import { Grid, Paper, Box, Divider } from "@mui/material";
 import { Settings, PowerSettingsNew } from "@mui/icons-material/";
 import Avatar from "@mui/material/Avatar";
-import { StyledBadge } from "../../../Utils/stylingMethods";
+import { StyledBadge, gradientBackground } from "../../../Utils/stylingMethods";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
@@ -131,11 +131,11 @@ const ProfileSection = ({ removeCookie, cookies }) => {
             <ListItemButton
               sx={{
                 borderRadius: 1,
-                background: "#0288D1",
+                background: gradientBackground("#0288D1"),
                 mb: 1,
                 color: "#fff",
                 "&:hover": {
-                  background: "#0288D1",
+                  background: gradientBackground("#0288D1"),
                   mb: 1,
                   color: "#fff",
                 },
@@ -150,10 +150,10 @@ const ProfileSection = ({ removeCookie, cookies }) => {
             <ListItemButton
               sx={{
                 borderRadius: 1,
-                background: "#00796B",
+                background: gradientBackground("#00796B"),
                 color: "#fff",
                 "&:hover": {
-                  background: "#00796B",
+                  background: gradientBackground("#00796B"),
                   color: "#fff",
                 },
               }}

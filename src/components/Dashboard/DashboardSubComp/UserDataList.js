@@ -13,6 +13,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import { CardBorder, Dark00FF, DarkFFF } from "../../../Utils/CommonCookies";
+import { gradientBackground } from "../../../Utils/stylingMethods";
 
 const UserDataList = ({
   cookies,
@@ -23,16 +24,15 @@ const UserDataList = ({
   loading,
   userData,
 }) => {
+  const isAdmin = userData.role === "Admin";
 
-const isAdmin = userData.role === "Admin";
-
-const filteredData = isAdmin
-  ? data
-  : data.filter(
-      (i) =>
-        i?.course === userData?.course && i?.courseYear === userData?.courseYear
-    );
-
+  const filteredData = isAdmin
+    ? data
+    : data.filter(
+        (i) =>
+          i?.course === userData?.course &&
+          i?.courseYear === userData?.courseYear
+      );
 
   return (
     <Grid item xs={12} sm={6} md={4} lg={4}>
@@ -41,7 +41,7 @@ const filteredData = isAdmin
           sx={{
             display: "flex",
             padding: "10px",
-            background: bgColor,
+            background: gradientBackground(bgColor),
             color: "#fff",
             borderTopLeftRadius: "5px",
             borderTopRightRadius: "5px",

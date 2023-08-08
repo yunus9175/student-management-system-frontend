@@ -1,46 +1,30 @@
+import { Box, Drawer, IconButton } from "@mui/material";
 import React, { memo } from "react";
-import Menu from "@mui/material/Menu";
-const MenuWrapper = ({ anchorEl, open, handleClose, children }) => {
-
-  const PaperProps = {
-    elevation: 0,
-    sx: {
-      padding: "0px 6px",
-      overflow: "visible",
-      filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-      mt: 1.5,
-      "& .MuiAvatar-root": {
-        width: 32,
-        height: 32,
-        ml: -0.5,
-        mr: 1,
-      },
-      "&:before": {
-        content: '""',
-        display: "block",
-        position: "absolute",
-        top: 0,
-        right: 14,
-        width: 10,
-        height: 10,
-        transform: "translateY(-50%) rotate(45deg)",
-        zIndex: 0,
-      },
-    },
-  };
+import CloseIcon from "@mui/icons-material/Close";
+import { Dark00, DarkFF4F } from "./CommonCookies";
+const MenuWrapper = ({ open, toggleDrawer, children, cookies }) => {
   return (
     <>
-      <Menu
-        anchorEl={anchorEl}
-        id="account-menu"
+      <Drawer
+        anchor="right"
         open={open}
-        onClose={handleClose}
-        PaperProps={PaperProps}
-        transformOrigin={{ horizontal: "right", vertical: "top" }}
-        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+        onClose={toggleDrawer}
+        ModalProps={{
+          style: {
+            zIndex: 1500, // Set a high z-index value
+          },
+        }}
       >
-        {children}
-      </Menu>
+        <Box
+          sx={{ width: 240, background: Dark00(cookies), height: "100vh" }}
+          role="presentation"
+        >
+          <IconButton onClick={toggleDrawer}>
+            <CloseIcon sx={{ color: DarkFF4F(cookies) }} />
+          </IconButton>
+          {children}
+        </Box>
+      </Drawer>
     </>
   );
 };

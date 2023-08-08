@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from "react";
+import React, { memo } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -10,16 +10,14 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useMediaQuery } from "@mui/material";
 import ModeComp from "./ModeComp";
 import BeforeLoginMenuBody from "./BeforeLoginMenuBody";
+import { gradientBackground } from "./stylingMethods";
 const Header = () => {
   const matches = useMediaQuery("(min-width:600px)");
   const navigate = useNavigate();
-  const [anchorEl, setAnchorEl] = useState(null);
-  const MenuOpen = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
+  const [open, setOpen] = React.useState(false);
+
+  const toggleDrawer = () => {
+    setOpen(!open);
   };
   const CommonCode = (link, title) => {
     if (window.location.pathname === link) {
@@ -40,9 +38,7 @@ const Header = () => {
               textAlign: "center",
               color: "#fff",
               "&:hover": {
-                background:
-                  !matches &&
-                  "#1976D2",
+                background: !matches && "#1976D2",
                 color: !matches && "#fff",
               },
             }}
@@ -53,16 +49,11 @@ const Header = () => {
       );
     }
   };
-  useEffect(() => {
-    if (matches) {
-      handleClose();
-    }
-  }, [matches]);
   return (
     <AppBar
       position="fixed"
       sx={{
-        background: "radial-gradient(circle at center, #1976D2 , #292929)",
+        background:gradientBackground("#1976D2"),
         color: "#fff",
         height: "64px",
       }}
@@ -74,21 +65,25 @@ const Header = () => {
           color="inherit"
           noWrap
           sx={{ flexGrow: 1, cursor: "pointer" }}
-          onClick={() =>{window.location.pathname !== "/admin/sign_in" && navigate("/")}}
+          onClick={() => {
+            window.location.pathname !== "/admin/sign_in" && navigate("/");
+          }}
         >
-          StudentTracker
+          StudentsTracker
         </Typography>
-        {window.location.pathname === "/admin/sign_in" ?   <ModeComp /> : (
+        {window.location.pathname === "/admin/sign_in" ? (
+          <ModeComp />
+        ) : (
           <>
             {!matches ? (
               <>
                 <IconButton
                   aria-label="menu"
-                  onClick={handleClick}
+                  onClick={toggleDrawer}
                   size="small"
-                  aria-controls={MenuOpen ? "account-menu" : undefined}
+                  aria-controls={open ? "account-menu" : undefined}
                   aria-haspopup="true"
-                  aria-expanded={MenuOpen ? "true" : undefined}
+                  aria-expanded={open ? "true" : undefined}
                 >
                   <MenuIcon sx={{ width: 24, height: 24, color: "#fff" }} />
                 </IconButton>
@@ -103,11 +98,7 @@ const Header = () => {
           </>
         )}
       </Toolbar>
-      <BeforeLoginMenuBody
-        anchorEl={anchorEl}
-        open={MenuOpen}
-        handleClose={handleClose}
-      />
+      <BeforeLoginMenuBody open={open} toggleDrawer={toggleDrawer} />
     </AppBar>
   );
 };

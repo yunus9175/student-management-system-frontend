@@ -8,6 +8,7 @@ import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { openSnackbar } from "../../../app/reducer/Snackbar";
+import { gradientBackground } from "../../../Utils/stylingMethods";
 const CommonUI = ({ value, cookies, title }) => {
   return (
     <Grid
@@ -35,7 +36,7 @@ const CardSection = ({ item, cookies, handleActive }) => {
   const topColor = item.active ? "#4CAF50" : "#EF5350";
   const buttonStyles = {
     borderRadius: "50%",
-    background: "radial-gradient(circle at center, #1976D2 , #292929)",
+    background:gradientBackground("#1976D2"),
     color: "white",
     width: "40px",
     height: "40px",

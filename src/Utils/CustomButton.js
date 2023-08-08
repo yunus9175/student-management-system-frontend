@@ -1,43 +1,33 @@
-import { Button } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 import React, { memo } from "react";
+import { gradientBackground } from "./stylingMethods";
 
 const CustomButton = ({ text, loading }) => {
-  const variantChange = () => {
-    if (
-      [
-        "/sign_in",
-        "/forgot-password",
-        "/reset-password",
-        "/",
-        "/admin/sign_in",
-        "/manage-departments",
-      ].includes(window.location.pathname)
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  };
   return (
-    <Button
+    <LoadingButton
       type="submit"
-      variant={variantChange() ? "contained" : "text"}
+      variant={"contained"}
       sx={{
-        mt: variantChange() && 1,
+        mt: 1,
         width: "100%",
         textTransform: "capitalize",
-        background: variantChange() && "#1976D2",
+        background: gradientBackground("#1976D2"),
         color: "#fff",
         borderColor: "#fff",
         ":hover": {
           color: "#fff",
           borderColor: "#fff",
+          background: gradientBackground("#1976D2"),
+        },
+        ":disabled": {
+          background: gradientBackground("#1976D2"),
         },
       }}
       disabled={loading}
+      loading={loading}
     >
-      {loading ? "Loading..." : text}
-    </Button>
+      <span> {text}</span>
+    </LoadingButton>
   );
 };
 

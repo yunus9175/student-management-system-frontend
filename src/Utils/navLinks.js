@@ -4,12 +4,11 @@ import {
   ManageAccounts,
   Sms,
   Home,
-  Login,
   CalendarMonth,
   Diversity3,
   AccountBalance,
-  Equalizer
-
+  Equalizer,
+  Person,
 } from "@mui/icons-material";
 export const navLinks = [
   {
@@ -92,7 +91,7 @@ export const navLinks = [
   {
     title: "Sign in",
     path: "/sign_in",
-    icon: <Login />,
+    icon: <Person />,
     LoggedIn: false,
   },
 ];

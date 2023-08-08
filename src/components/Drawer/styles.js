@@ -1,4 +1,5 @@
 import { Dark00, Dark00FF, DarkFFF } from "../../Utils/CommonCookies";
+import { gradientBackground } from "../../Utils/stylingMethods";
 
 export const DrawerStyle = (cookies, matches, upDown, open) => {
   const path = [
@@ -71,7 +72,7 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       marginTop: "1rem",
       paddingBottom: "10px",
       backgroundColor: Dark00(cookies),
-      height: "97.5vh",
+      height: "97.9vh",
       overflowY: "scroll",
       scrollbarWidth: "none", // hide scrollbar on Firefox
       "&::-webkit-scrollbar": {
@@ -111,7 +112,7 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       pb: 0,
     },
     appBar = {
-      background: "radial-gradient(circle at center, #1976D2 , #292929)",
+      background:gradientBackground("#1976D2"),
       boxShadow: "none",
     },
     toolbarIconBtn = {

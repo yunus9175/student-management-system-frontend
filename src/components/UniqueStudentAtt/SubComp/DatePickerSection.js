@@ -3,6 +3,7 @@ import React, { memo } from "react";
 import DatePicker from "react-datepicker";
 
 import "./react-datepicker.css";
+import { gradientBackground } from "../../../Utils/stylingMethods";
 
 const DatePickerSection = ({ startDate, setStartDate, endDate, setEndDate }) => {
   const onChange = (dates) => {
@@ -20,7 +21,7 @@ const DatePickerSection = ({ startDate, setStartDate, endDate, setEndDate }) => 
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        background: "radial-gradient(circle at center, #1976D2 , #292929)",
+        background:gradientBackground("#1976D2"),
       }}
     >
       <Box

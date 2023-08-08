@@ -21,18 +21,19 @@ const UniqueIndex = () => {
   const [AttData, setAttData] = useState([]);
   const dispatch = useDispatch();
   const [cookies] = useCookies(["loggedIn", "UserId", "theme"]);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
+    setLoading(true);
     GET_ATTENDANCE_BY_ID(id)
       .then((res) => {
         setAttData(res.data);
+        setLoading(false);
       })
       .catch((err) => {
+        setLoading(false);
         errorHandler(err?.status, err?.data, dispatch);
       });
   }, [dispatch, id]);
-
-
 
   return (
     <CustomTheme>
@@ -47,7 +48,7 @@ const UniqueIndex = () => {
             text={"View Attendance Details"}
             id={id}
           />{" "}
-          <TopSection AttData={AttData} />
+          <TopSection cookies={cookies} AttData={AttData} loading={loading} />
           <AttendanceInfo cookies={cookies} AttData={AttData} />
           <StudentsList cookies={cookies} AttData={AttData} id={id} />
           <AttendanceGraphChart cookies={cookies} AttData={AttData} />

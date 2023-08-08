@@ -17,7 +17,7 @@ function Copyright({ cookies, navigate }) {
         onClick={() => navigate("/sign_in")}
         sx={{ cursor: "pointer" }}
       >
-        StudentTracker
+        StudentsTracker
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -45,7 +45,7 @@ const Footer = ({ cookies }) => {
         sx={{ color: DarkFFF(cookies) }}
         gutterBottom
       >
-        StudentTracker
+        StudentsTracker
       </Typography>
       <Copyright cookies={cookies} navigate={navigate} />
     </Box>

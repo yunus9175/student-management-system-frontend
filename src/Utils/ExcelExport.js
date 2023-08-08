@@ -3,6 +3,7 @@ import React, { memo } from "react";
 import { utils, writeFile } from "xlsx";
 import { useCookies } from "react-cookie";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
+import { gradientBackground } from "./stylingMethods";
 const ExcelExport = ({ userData, data, fileName }) => {
   const [cookies] = useCookies(["theme"]);
   const getYear = (yearNumber) => {
@@ -74,7 +75,7 @@ const ExcelExport = ({ userData, data, fileName }) => {
       sx={{
         textTransform: "capitalize",
         color: cookies.theme === "dark" ? "#fff" : "#1976D2",
-        background: cookies.theme === "dark" && "#1976D2",
+        background: cookies.theme === "dark" && gradientBackground("#1976D2"),
       }}
       onClick={exportToExcel}
     >

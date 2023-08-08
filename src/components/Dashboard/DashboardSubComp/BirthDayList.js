@@ -20,6 +20,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import { GET_BIRTHDAY } from "../../../ApiFunctions/students";
 import { errorHandler } from "../../../ApiFunctions/ErrorHandler";
 import { CardBorder, Dark00FF, DarkFFF } from "../../../Utils/CommonCookies";
+import { gradientBackground } from "../../../Utils/stylingMethods";
 
 const BirthDayList = ({ cookies, icon, title, bgColor, userData }) => {
   const matches = useMediaQuery("(min-width:900px)");
@@ -141,7 +142,7 @@ const BirthDayList = ({ cookies, icon, title, bgColor, userData }) => {
             border: CardBorder(cookies, bgColor),
             borderBottomLeftRadius: "5px",
             borderBottomRightRadius: "5px",
-            scrollbarWidth: "none", // hide scrollbar on Firefox
+            scrollbarWidth: "none",borderTop: 'none',
             "&::-webkit-scrollbar": {
               width: 0,
               height: 0,
@@ -168,7 +169,7 @@ const BirthDayList = ({ cookies, icon, title, bgColor, userData }) => {
           sx={{
             display: "flex",
             padding: "10px",
-            background: bgColor,
+            background: gradientBackground(bgColor),
             color: "#fff",
             borderTopLeftRadius: "5px",
             borderTopRightRadius: "5px",
@@ -183,14 +184,14 @@ const BirthDayList = ({ cookies, icon, title, bgColor, userData }) => {
               sx={{
                 borderBottom: 1,
                 borderColor: "divider",
-                background: cookies.theme === "dark" ? bgColor : "#fff",
+                background: Dark00FF(cookies)
               }}
             >
               <TabList
                 onChange={handleChange}
                 sx={{
                   "& .MuiTabs-indicator": {
-                    background: cookies.theme === "dark" ? "#fff" : "#1976D2",
+                    background: gradientBackground(bgColor),
                   },
                 }}
               >
@@ -200,7 +201,7 @@ const BirthDayList = ({ cookies, icon, title, bgColor, userData }) => {
                   sx={{
                     textTransform: "capitalize",
                     color: DarkFFF(cookies),
-                    background: cookies.theme === "dark" ? bgColor : "#fff",
+                    background: Dark00FF(cookies),
                     "&.Mui-selected": {
                       color: cookies.theme === "dark" && "#fff",
                     },
@@ -212,7 +213,7 @@ const BirthDayList = ({ cookies, icon, title, bgColor, userData }) => {
                   sx={{
                     textTransform: "capitalize",
                     color: DarkFFF(cookies),
-                    background: cookies.theme === "dark" ? bgColor : "#fff",
+                    background: Dark00FF(cookies),
                     "&.Mui-selected": {
                       color: cookies.theme === "dark" && "#fff",
                     },

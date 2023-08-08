@@ -13,6 +13,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import { CardBorder, Dark00FF, DarkFFF } from "../../../Utils/CommonCookies";
+import { gradientBackground } from "../../../Utils/stylingMethods";
 const RecentMessageList = ({
   cookies,
   icon,
@@ -39,7 +40,7 @@ const RecentMessageList = ({
           sx={{
             display: "flex",
             padding: "10px",
-            background: bgColor,
+            background: gradientBackground(bgColor),
             color: "#fff",
             borderTopLeftRadius: "5px",
             borderTopRightRadius: "5px",
@@ -70,7 +71,7 @@ const RecentMessageList = ({
             <List
               sx={{
                 width: "100%",
-                pt:0
+                pt: 0,
               }}
             >
               {filteredData.map((item, index) => {

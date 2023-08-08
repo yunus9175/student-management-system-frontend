@@ -174,13 +174,13 @@ export const ExpandMore = styled((props) => {
   }),
 }));
 
-export const MaterialUISwitch = styled(Switch)(({ theme, matches }) => ({
-  width: !matches ? 48 : 62,
-  height: !matches ? 27 : 34,
-  padding: !matches ? 6 : 7,
-  marginLeft: !matches && 5,
+export const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+  width: 62,
+  height: 34,
+  padding: 7,
+  marginLeft: 5,
   "& .MuiSwitch-switchBase": {
-    margin: !matches ? "1px 0px!important" : 1,
+    margin: 1,
     padding: 0,
     transform: "translateX(6px)",
     "&.Mui-checked": {
@@ -199,8 +199,8 @@ export const MaterialUISwitch = styled(Switch)(({ theme, matches }) => ({
   },
   "& .MuiSwitch-thumb": {
     backgroundColor: theme.palette.mode === "dark" ? "#003892" : "#001e3c",
-    width: !matches ? "24px!important" : 32,
-    height: !matches ? "24px!important" : 32,
+    width: 32,
+    height: 32,
     "&:before": {
       content: "''",
       position: "absolute",
@@ -279,3 +279,9 @@ export const ContainerStyle = {
   paddingLeft: "0px !important",
   paddingRight: "0px !important",
 };
+
+
+export const gradientBackground = (color) =>{
+ return `radial-gradient(circle at center, ${color} , #292929)`;
+}
+ 

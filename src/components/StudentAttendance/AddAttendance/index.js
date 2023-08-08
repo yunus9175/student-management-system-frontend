@@ -8,10 +8,17 @@ import {
   TablePagination,
   TableRow,
   Button,
-  Box,Avatar,Stack,Typography
+  Box,
+  Avatar,
+  Stack,
+  Typography,
 } from "@mui/material";
 import { errorHandler } from "../../../ApiFunctions/ErrorHandler";
-import { AntSwitch, StyledTableCell } from "../../../Utils/stylingMethods";
+import {
+  AntSwitch,
+  StyledTableCell,
+  gradientBackground,
+} from "../../../Utils/stylingMethods";
 import { CardName } from "../../../Utils/CardName";
 import { Dark00FF, DarkFFF } from "../../../Utils/CommonCookies";
 import { ADD_ATTENDANCE } from "../../../ApiFunctions/attendance";
@@ -67,7 +74,6 @@ const AddAttendance = ({
         _id,
         attendance,
       }));
-
 
     ADD_ATTENDANCE(
       attendanceList,
@@ -233,10 +239,10 @@ const AddAttendance = ({
                 minWidth: "120px",
                 textTransform: "capitalize",
                 color: "#fff",
-                background: "#1976D2",
+                background: gradientBackground("#1976D2"),
                 "&:hover": {
                   color: "#fff",
-                  background: "#1976D2",
+                  background: gradientBackground("#1976D2"),
                 },
               }}
               onClick={handleSubmit}

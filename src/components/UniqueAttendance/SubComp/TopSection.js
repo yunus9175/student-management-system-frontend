@@ -1,15 +1,33 @@
-import { Box, Grid, Paper, Typography, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Grid,
+  LinearProgress,
+  Paper,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import moment from "moment";
 import React, { memo } from "react";
+import { Dark00FF, Light4F } from "../../../Utils/CommonCookies";
 
-const TopSection = ({ AttData }) => {
-   const matches = useMediaQuery("(min-width:600px)");
+const TopSection = ({ AttData, cookies, loading }) => {
+  const matches = useMediaQuery("(min-width:600px)");
+
+  const LinearProgressBar = () => {
+    return (
+      <Box sx={{ width: "100%" }}>
+        <LinearProgress
+          color="inherit"
+        />
+      </Box>
+    );
+  };
   return (
     <Paper
       elevation={0}
       sx={{
         p: "10px",
-        background: "radial-gradient(circle at center, #1976D2 , #292929)",
+        background: Dark00FF(cookies),
       }}
     >
       <Grid
@@ -26,41 +44,44 @@ const TopSection = ({ AttData }) => {
           md={6}
           sx={{ display: "flex", justifyContent: matches ? "start" : "center" }}
         >
-          {" "}
-          <Box
-            sx={{
-              color: "#fff",
-              fontSize: "20px",
-              textTransform: "capitalize",
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-            }}
-          >
-            {" "}
-            Course:
-            <Typography
+          {loading ? (
+            <LinearProgressBar />
+          ) : (
+            <Box
               sx={{
-                color: "#fff",
-                fontSize: "20px",
-                textTransform: "uppercase",
-                ml: 1,
-              }}
-            >
-              {" "}
-              {AttData?.course}
-            </Typography>
-            <Typography
-              sx={{
-                color: "#fff",
+                color: Light4F(cookies),
                 fontSize: "20px",
                 textTransform: "capitalize",
-                ml: 1,
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                width: "100%",
               }}
             >
-              ({AttData?.courseYear})
-            </Typography>
-          </Box>
+              Course:
+              <Typography
+                sx={{
+                  color: Light4F(cookies),
+                  fontSize: "20px",
+                  textTransform: "uppercase",
+                  ml: 1,
+                }}
+              >
+                {" "}
+                {AttData?.course}
+              </Typography>
+              <Typography
+                sx={{
+                  color: Light4F(cookies),
+                  fontSize: "20px",
+                  textTransform: "capitalize",
+                  ml: 1,
+                }}
+              >
+                ({AttData?.courseYear})
+              </Typography>
+            </Box>
+          )}
         </Grid>
         <Grid
           item
@@ -69,14 +90,18 @@ const TopSection = ({ AttData }) => {
           md={6}
           sx={{ display: "flex", justifyContent: matches ? "end" : "center" }}
         >
-          <Typography
-            sx={{
-              color: "#fff",
-              fontSize: "20px",
-            }}
-          >
-            Date: {moment(AttData?.date).format("LL")}
-          </Typography>
+          {loading ? (
+            <LinearProgressBar />
+          ) : (
+            <Typography
+              sx={{
+                color: Light4F(cookies),
+                fontSize: "20px",
+              }}
+            >
+              Date: {moment(AttData?.date).format("LL")}
+            </Typography>
+          )}
         </Grid>
       </Grid>
     </Paper>
