@@ -1,6 +1,6 @@
 import { CardBorder, Dark00 } from "../../Utils/CommonCookies";
 
-export const HomeStyle = (cookies) => {
+export const HomeStyle = (cookies,matches) => {
   let Container = { margin: "60px 0px 0px 0px" },
     MainContainer = {
       transition: "0.3s",
@@ -21,7 +21,7 @@ export const HomeStyle = (cookies) => {
     typo1 = {
       margin: 0,
       fontWeight: 400,
-      fontSize: "3rem",
+      fontSize: matches ?"3rem":"2rem",
       lineHeight: 1.167,
       letterSpacing: "0em",
       marginBottom: "0.35em",
