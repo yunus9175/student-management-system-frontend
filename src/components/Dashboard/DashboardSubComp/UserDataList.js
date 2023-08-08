@@ -14,7 +14,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import { CardBorder, Dark00FF, DarkFFF } from "../../../Utils/CommonCookies";
 import { gradientBackground } from "../../../Utils/stylingMethods";
-import Scrollbar from "react-custom-scrollbars";
 const UserDataList = ({
   cookies,
   icon,
@@ -61,9 +60,22 @@ const UserDataList = ({
               border: CardBorder(cookies, bgColor),
               borderBottomLeftRadius: "5px",
               borderBottomRightRadius: "5px",
+              overflowY: "scroll", // Use "scroll" to show the scrollbar always
+              scrollbarWidth: "none", // Hide scrollbar on Firefox
+              "-ms-overflow-style": "none", // Hide scrollbar on IE and Edge
+              "&::-webkit-scrollbar": {
+                width: "10px", // Customize the width of the scrollbar
+                background: "#fff", // Customize the background color of the scrollbar track
+              },
+              "&::-webkit-scrollbar-thumb": {
+                background: "#CCCCCC", // Customize the color of the scrollbar thumb
+                borderRadius: "10px", // Customize the border radius of the thumb
+              },
+              "&::-webkit-scrollbar-thumb:hover": {
+                background: "#555", // Customize the color of the thumb on hover
+              },
             }}
           >
-            <Scrollbar style={{ height: "100%" }}>
               <List
                 sx={{
                   width: "100%",
@@ -109,7 +121,6 @@ const UserDataList = ({
                   );
                 })}
               </List>
-            </Scrollbar>
           </Paper>
         ) : (
           <Paper
