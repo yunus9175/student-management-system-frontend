@@ -19,7 +19,7 @@ import {
 const Home = () => {
   const [cookies] = useCookies(["loggedIn", "theme"]);
     const matches = useMediaQuery("(min-width:900px)");
-  const styles = HomeStyle(cookies);
+  const styles = HomeStyle(cookies, matches);
   useEffect(() => {
     if (window.location.path === "/" && cookies.loggedIn === "true") {
       <Navigate to="/dashboard" />;
