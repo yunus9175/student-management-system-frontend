@@ -3,7 +3,6 @@ import { Button, Dialog, DialogActions, Grid } from "@mui/material";
 import CustomTextField from "../../Utils/CustomTextField";
 import PaperWrapper from "../../Utils/PaperWrapper";
 import CustomMultilineTextField from "../../Utils/CustomMultilineTextField";
-import { IconColor } from "../../Utils/CommonCookies";
 import { gradientBackground } from "../../Utils/stylingMethods";
 import { LoadingButton } from "@mui/lab";
 const Reply = ({

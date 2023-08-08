@@ -1,9 +1,8 @@
-import { Box, Grid, Paper, Typography } from "@mui/material";
+import { Grid, Paper, Typography } from "@mui/material";
 import React, { memo } from "react";
 import DatePicker from "react-datepicker";
 
 import "./react-datepicker.css";
-import { gradientBackground } from "../../../Utils/stylingMethods";
 import { Dark00FF, Light4F } from "../../../Utils/CommonCookies";
 
 const DatePickerSection = ({
