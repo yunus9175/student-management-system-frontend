@@ -1,11 +1,19 @@
-import { Box, Paper } from "@mui/material";
+import { Box, Grid, Paper, Typography } from "@mui/material";
 import React, { memo } from "react";
 import DatePicker from "react-datepicker";
 
 import "./react-datepicker.css";
 import { gradientBackground } from "../../../Utils/stylingMethods";
+import { Dark00FF, Light4F } from "../../../Utils/CommonCookies";
 
-const DatePickerSection = ({ startDate, setStartDate, endDate, setEndDate }) => {
+const DatePickerSection = ({
+  startDate,
+  setStartDate,
+  endDate,
+  setEndDate,
+  cookies,
+  matches,
+}) => {
   const onChange = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
@@ -17,32 +25,56 @@ const DatePickerSection = ({ startDate, setStartDate, endDate, setEndDate }) => 
       elevation={0}
       sx={{
         p: "10px",
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        background:gradientBackground("#1976D2"),
+        background: Dark00FF(cookies),
       }}
     >
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          color: "#fff",
-          fontSize: "18px",
-        }}
+      <Grid
+        container
+        spacing={2}
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
       >
-        Select start date and end date from calendar to view attendance:{" "}
-        <DatePicker
-          selected={startDate}
-          onChange={onChange}
-          startDate={startDate}
-          endDate={endDate}
-          selectsRange
-          className="custom-datepicker"
-        />
-      </Box>
+        <Grid
+          item
+          xs={12}
+          sm={6}
+          md={6}
+          sx={{
+            display: "flex",
+            justifyContent: matches ? "flex-start" : "center",
+          }}
+        >
+          <Typography
+            sx={{
+              color: Light4F(cookies),
+              fontSize: "16px",
+            }}
+          >
+            Select start date and end date from calendar to view attendance:
+          </Typography>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          sm={6}
+          md={6}
+          sx={{
+            display: "flex",
+            justifyContent: matches ? "flex-start" : "center",
+          }}
+        >
+          {" "}
+          <DatePicker
+            selected={startDate}
+            onChange={onChange}
+            startDate={startDate}
+            endDate={endDate}
+            selectsRange
+            className="custom-datepicker"
+          />
+        </Grid>
+      </Grid>
     </Paper>
   );
 };

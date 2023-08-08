@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Typography, Grid, Paper, Box, Button } from "@mui/material";
+import { Typography, Grid, Paper, Box, Button, useMediaQuery, Tooltip, IconButton } from "@mui/material";
 import { Dark00FF } from "./CommonCookies";
 import { useCookies } from "react-cookie";
 import ExcelExport from "./ExcelExport";
@@ -11,6 +11,7 @@ const TitleBox = ({ icon, text, data, fileName, id }) => {
   const { userData } = useSelector((state) => state.getUserProfile);
   const [cookies] = useCookies(["theme"]);
   const isAdmin = userData.role === "Admin";
+  const matches = useMediaQuery("(min-width:600px)");
   const navigate = useNavigate();
   const attendance_id = localStorage.getItem("attendance_id");
   const ExportBtnCondition = () => {
@@ -66,19 +67,51 @@ const TitleBox = ({ icon, text, data, fileName, id }) => {
     }
   };
 
+  const gridCondition = () => {
+    if (
+      [
+        "/manage-departments",
+        "/manage-students-account",
+        "/manage-queries",
+        `/manage-students-account/${id}`,
+        `/manage-students/${id}`,
+        `/manage-teachers/${id}`,
+        "/manage-students-attendance",
+        `/manage-students-attendance/${id}`,
+        `/view-student-attendance/${id}`,
+      ].includes(window.location.pathname)
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   return (
-    <Grid container spacing={2} sx={{ mb: 2 }}>
-      <Grid item xs={12} md={12} lg={12}>
-        <Paper
-          elevation={0}
+    <Paper
+      elevation={0}
+      sx={{
+        p: "10px",
+        mb: 2,
+        background: Dark00FF(cookies),
+      }}
+    >
+      <Grid
+        container
+        spacing={2}
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Grid
+          item
+          xs={gridCondition() ? 10 : 12}
+          sm={gridCondition() ? 10 : 6}
+          md={gridCondition() ? 10 : 6}
           sx={{
-            p: "10px",
             display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
             justifyContent: "space-between",
-            background: Dark00FF(cookies),
-            // border: CardBorder(cookies, "#1976D2"),
+            alignItems: "center",
           }}
         >
           <Box
@@ -86,35 +119,64 @@ const TitleBox = ({ icon, text, data, fileName, id }) => {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
+              justifyContent: "center",
             }}
           >
             {icon}
             <Typography
               sx={{
                 color: cookies.theme === "dark" ? "#fff" : "#1976D2",
-                fontSize: "20px",
+                fontSize:matches ? "20px":"18px",
                 ml: 1,
               }}
             >
               {text}
             </Typography>
           </Box>
-          {BackBtn() && (
-            <Button
-              variant="outlined"
-              startIcon={<ArrowBackIcon />}
-              sx={{
-                textTransform: "capitalize",
-                color: cookies.theme === "dark" ? "#fff" : "#1976D2",
-                background:
-                  cookies.theme === "dark" && gradientBackground("#1976D2"),
-              }}
-              onClick={() => BackFunction()}
-            >
-              Back
-            </Button>
-          )}
-          {ExportBtnCondition() && (
+        </Grid>
+        {BackBtn() && (
+          <Grid
+            item
+            xs={gridCondition() ? 2 : 12}
+            sm={gridCondition() ? 2 : 6}
+            md={gridCondition() ? 2 : 6}
+            sx={{ display: "flex", justifyContent: "flex-end" }}
+          >
+            {matches ? (
+              <Button
+                variant="outlined"
+                startIcon={<ArrowBackIcon />}
+                sx={{
+                  textTransform: "capitalize",
+                  color: cookies.theme === "dark" ? "#fff" : "#1976D2",
+                  background:
+                    cookies.theme === "dark" && gradientBackground("#1976D2"),
+                }}
+                onClick={() => BackFunction()}
+              >
+                Back
+              </Button>
+            ) : (
+              <Tooltip title={"Back"} placement="top">
+                <IconButton
+                  color="primary"
+                  aria-label="Back"
+                  onClick={() => BackFunction()}
+                >
+                  <ArrowBackIcon />
+                </IconButton>
+              </Tooltip>
+            )}
+          </Grid>
+        )}
+        {ExportBtnCondition() && (
+          <Grid
+            item
+            xs={gridCondition() ? 2 : 12}
+            sm={gridCondition() ? 2 : 6}
+            md={gridCondition() ? 2 : 6}
+            sx={{ display: "flex", justifyContent: "flex-end" }}
+          >
             <Box>
               <ExcelExport
                 userData={userData}
@@ -122,10 +184,10 @@ const TitleBox = ({ icon, text, data, fileName, id }) => {
                 fileName={fileName}
               />
             </Box>
-          )}
-        </Paper>
+          </Grid>
+        )}
       </Grid>
-    </Grid>
+    </Paper>
   );
 };
 

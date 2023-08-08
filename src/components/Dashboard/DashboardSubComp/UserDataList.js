@@ -14,7 +14,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import { CardBorder, Dark00FF, DarkFFF } from "../../../Utils/CommonCookies";
 import { gradientBackground } from "../../../Utils/stylingMethods";
-
+import Scrollbar from "react-custom-scrollbars";
 const UserDataList = ({
   cookies,
   icon,
@@ -57,63 +57,59 @@ const UserDataList = ({
               borderRadius: 0,
               height: "231px",
               paddingBottom: "10px",
-              overflowY: "scroll",
               background: Dark00FF(cookies),
               border: CardBorder(cookies, bgColor),
               borderBottomLeftRadius: "5px",
               borderBottomRightRadius: "5px",
-              scrollbarWidth: "none", // hide scrollbar on Firefox
-              "&::-webkit-scrollbar": {
-                width: 0,
-                height: 0,
-              },
             }}
           >
-            <List
-              sx={{
-                width: "100%",
-              }}
-            >
-              {filteredData.map((item, index) => {
-                return (
-                  <Box key={index}>
-                    <ListItem>
-                      <ListItemAvatar>
-                        <Avatar
-                          src={item?.profileImage}
-                          sx={{ border: `1px solid ${bgColor}` }}
+            <Scrollbar style={{ height: "100%" }}>
+              <List
+                sx={{
+                  width: "100%",
+                }}
+              >
+                {filteredData.map((item, index) => {
+                  return (
+                    <Box key={index}>
+                      <ListItem>
+                        <ListItemAvatar>
+                          <Avatar
+                            src={item?.profileImage}
+                            sx={{ border: `1px solid ${bgColor}` }}
+                          />
+                        </ListItemAvatar>
+                        <ListItemText
+                          primary={
+                            <Typography
+                              sx={{
+                                textTransform: "capitalize",
+                                fontSize: "14px",
+                                fontWeight: "bold",
+                                color: DarkFFF(cookies),
+                              }}
+                            >
+                              {item?.fullName}
+                            </Typography>
+                          }
+                          secondary={
+                            <Typography
+                              sx={{
+                                fontSize: "13px",
+                                color: DarkFFF(cookies),
+                              }}
+                            >
+                              {item?.email}
+                            </Typography>
+                          }
                         />
-                      </ListItemAvatar>
-                      <ListItemText
-                        primary={
-                          <Typography
-                            sx={{
-                              textTransform: "capitalize",
-                              fontSize: "14px",
-                              fontWeight: "bold",
-                              color: DarkFFF(cookies),
-                            }}
-                          >
-                            {item?.fullName}
-                          </Typography>
-                        }
-                        secondary={
-                          <Typography
-                            sx={{
-                              fontSize: "13px",
-                              color: DarkFFF(cookies),
-                            }}
-                          >
-                            {item?.email}
-                          </Typography>
-                        }
-                      />
-                    </ListItem>
-                    <Divider variant="inset" component="li" />
-                  </Box>
-                );
-              })}
-            </List>
+                      </ListItem>
+                      <Divider variant="inset" component="li" />
+                    </Box>
+                  );
+                })}
+              </List>
+            </Scrollbar>
           </Paper>
         ) : (
           <Paper
@@ -122,7 +118,7 @@ const UserDataList = ({
               borderRadius: 0,
               height: "231px",
               paddingBottom: "10px",
-              overflowY: "scroll",
+              overflowY: "auto",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -130,14 +126,10 @@ const UserDataList = ({
               border: CardBorder(cookies, bgColor),
               borderBottomLeftRadius: "5px",
               borderBottomRightRadius: "5px",
-              scrollbarWidth: "none", // hide scrollbar on Firefox
-              "&::-webkit-scrollbar": {
-                width: 0,
-                height: 0,
-              },
+              scrollbarWidth: "thin", // Customize the scrollbar width
+              scrollbarColor: `${bgColor} transparent`, // Customize the scrollbar color
             }}
           >
-            {" "}
             {loading ? (
               <CircularProgress color="inherit" />
             ) : (

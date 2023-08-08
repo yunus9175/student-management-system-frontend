@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CustomTheme from "../../Utils/CustomTheme";
 import MiniDrawer from "../Drawer/index";
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, useMediaQuery } from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import {
   School,
@@ -23,6 +23,7 @@ import { useCookies } from "react-cookie";
 import { useSelector } from "react-redux";
 import { ContainerStyle } from "../../Utils/stylingMethods";
 const Dashboard = () => {
+  const matches = useMediaQuery("(min-width:600px)");
   const [resources, setResources] = useState(null);
   const [loading, setLoading] = useState(true);
   const [recentMessages, setRecentMessages] = useState([]);
@@ -67,10 +68,7 @@ const Dashboard = () => {
   return (
     <CustomTheme>
       <MiniDrawer>
-        <Container
-          maxWidth="xl"
-          sx={ContainerStyle}
-        >
+        <Container maxWidth="xl" sx={ContainerStyle}>
           <TitleBox
             icon={
               <DashboardIcon
@@ -116,7 +114,11 @@ const Dashboard = () => {
               loading={loading}
               cookies={cookies}
             />
-            <ProfileSection removeCookie={removeCookie} cookies={cookies} />
+            <ProfileSection
+              removeCookie={removeCookie}
+              cookies={cookies}
+              matches={matches}
+            />
             <UserDataList
               cookies={cookies}
               data={recentStudents}

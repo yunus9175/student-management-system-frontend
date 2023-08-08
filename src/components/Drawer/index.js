@@ -193,7 +193,6 @@ const MiniDrawer = ({ children, setQuery, query, data, value }) => {
           </List>
         </Drawer>
         <Box component="main" sx={styles.innerBox2}>
-          {/* <DrawerHeader /> */}
           {children}
         </Box>
         <DialogBox

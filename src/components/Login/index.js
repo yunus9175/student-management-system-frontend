@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CustomButton from "../../Utils/CustomButton";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { openSnackbar } from "../../app/reducer/Snackbar";
+import { closeSnackbar, openSnackbar } from "../../app/reducer/Snackbar";
 import { useCookies } from "react-cookie";
 import CustomTextField from "../../Utils/CustomTextField";
 import CustomPassword from "../../Utils/CustomPassword";
@@ -56,6 +56,7 @@ export default function SignIn() {
         setCookie("UserType", res?.data?.role, { path: "/" });
         navigate("/dashboard");
         dispatch(setLoading(false));
+        dispatch(closeSnackbar())
       })
       .catch((err) => {
         errorHandler(err?.status, err?.data, dispatch);

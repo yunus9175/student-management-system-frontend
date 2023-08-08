@@ -14,6 +14,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import { CardBorder, Dark00FF, DarkFFF } from "../../../Utils/CommonCookies";
 import { gradientBackground } from "../../../Utils/stylingMethods";
+import Scrollbar from "react-custom-scrollbars";
 const RecentMessageList = ({
   cookies,
   icon,
@@ -56,63 +57,59 @@ const RecentMessageList = ({
               borderRadius: 0,
               height: "280px",
               paddingBottom: "10px",
-              overflowY: "scroll",
               borderBottomLeftRadius: "5px",
               borderBottomRightRadius: "5px",
               background: Dark00FF(cookies),
               border: CardBorder(cookies, bgColor),
-              scrollbarWidth: "none", // hide scrollbar on Firefox
-              "&::-webkit-scrollbar": {
-                width: 0,
-                height: 0,
-              },
             }}
           >
-            <List
-              sx={{
-                width: "100%",
-                pt: 0,
-              }}
-            >
-              {filteredData.map((item, index) => {
-                return (
-                  <Box key={index}>
-                    <ListItem alignItems="flex-start">
-                      <ListItemAvatar>
-                        <Avatar
-                          src={item?.profileImage}
-                          sx={{ border: `1px solid ${bgColor}` }}
+            <Scrollbar style={{ height: "100%" }}>
+              <List
+                sx={{
+                  width: "100%",
+                  pt: 0,
+                }}
+              >
+                {filteredData.map((item, index) => {
+                  return (
+                    <Box key={index}>
+                      <ListItem alignItems="flex-start">
+                        <ListItemAvatar>
+                          <Avatar
+                            src={item?.profileImage}
+                            sx={{ border: `1px solid ${bgColor}` }}
+                          />
+                        </ListItemAvatar>
+                        <ListItemText
+                          primary={
+                            <Typography
+                              sx={{
+                                fontWeight: "500",
+                                textTransform: "capitalize",
+                                color: DarkFFF(cookies),
+                              }}
+                            >
+                              {item?.comment}
+                            </Typography>
+                          }
+                          secondary={
+                            <Typography
+                              sx={{
+                                fontSize: "13px",
+                                color: DarkFFF(cookies),
+                              }}
+                            >
+                              {item?.email}
+                            </Typography>
+                          }
                         />
-                      </ListItemAvatar>
-                      <ListItemText
-                        primary={
-                          <Typography
-                            sx={{
-                              fontWeight: "500",
-                              textTransform: "capitalize",
-                              color: DarkFFF(cookies),
-                            }}
-                          >
-                            {item?.comment}
-                          </Typography>
-                        }
-                        secondary={
-                          <Typography
-                            sx={{
-                              fontSize: "13px",
-                              color: DarkFFF(cookies),
-                            }}
-                          >
-                            {item?.email}
-                          </Typography>
-                        }
-                      />
-                    </ListItem>
-                    <Divider variant="inset" component="li" />
-                  </Box>
-                );
-              })}
-            </List>
+                      </ListItem>
+                      <Divider variant="inset" component="li" />
+                    </Box>
+                  );
+                })}
+              </List>
+            </Scrollbar>
           </Paper>
         ) : (
           <Paper
@@ -121,7 +118,6 @@ const RecentMessageList = ({
               borderRadius: 0,
               height: "280px",
               paddingBottom: "10px",
-              overflowY: "scroll",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -129,11 +125,6 @@ const RecentMessageList = ({
               border: CardBorder(cookies, bgColor),
               borderBottomLeftRadius: "5px",
               borderBottomRightRadius: "5px",
-              scrollbarWidth: "none", // hide scrollbar on Firefox
-              "&::-webkit-scrollbar": {
-                width: 0,
-                height: 0,
-              },
             }}
           >
             {loading ? (

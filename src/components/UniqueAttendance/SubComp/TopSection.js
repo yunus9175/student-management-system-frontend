@@ -42,7 +42,10 @@ const TopSection = ({ AttData, cookies, loading }) => {
           xs={12}
           sm={6}
           md={6}
-          sx={{ display: "flex", justifyContent: matches ? "start" : "center" }}
+          sx={{
+            display: "flex",
+            justifyContent: matches ? "flex-start" : "center",
+          }}
         >
           {loading ? (
             <LinearProgressBar />
@@ -50,11 +53,12 @@ const TopSection = ({ AttData, cookies, loading }) => {
             <Box
               sx={{
                 color: Light4F(cookies),
-                fontSize: "20px",
+                fontSize: "18px",
                 textTransform: "capitalize",
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
+                justifyContent: matches ? "flex-start" : "center",
                 width: "100%",
               }}
             >
@@ -62,7 +66,7 @@ const TopSection = ({ AttData, cookies, loading }) => {
               <Typography
                 sx={{
                   color: Light4F(cookies),
-                  fontSize: "20px",
+                  fontSize: "18px",
                   textTransform: "uppercase",
                   ml: 1,
                 }}
@@ -73,7 +77,7 @@ const TopSection = ({ AttData, cookies, loading }) => {
               <Typography
                 sx={{
                   color: Light4F(cookies),
-                  fontSize: "20px",
+                  fontSize: "18px",
                   textTransform: "capitalize",
                   ml: 1,
                 }}
@@ -88,7 +92,10 @@ const TopSection = ({ AttData, cookies, loading }) => {
           xs={12}
           sm={6}
           md={6}
-          sx={{ display: "flex", justifyContent: matches ? "end" : "center" }}
+          sx={{
+            display: "flex",
+            justifyContent: matches ? "flex-end" : "center",
+          }}
         >
           {loading ? (
             <LinearProgressBar />
@@ -96,7 +103,7 @@ const TopSection = ({ AttData, cookies, loading }) => {
             <Typography
               sx={{
                 color: Light4F(cookies),
-                fontSize: "20px",
+                fontSize: "18px",
               }}
             >
               Date: {moment(AttData?.date).format("LL")}

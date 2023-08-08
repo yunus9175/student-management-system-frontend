@@ -16,9 +16,7 @@ import {
   DarkFF4F,
   DarkFFF,
 } from "../../../Utils/CommonCookies";
-import { useMediaQuery } from "@mui/material";
-const ProfileSection = ({ removeCookie, cookies }) => {
-  const matches = useMediaQuery("(min-width:600px)");
+const ProfileSection = ({ removeCookie, cookies, matches }) => {
   const { userData } = useSelector((state) => state.getUserProfile);
   const [dialogOpen, setDialogOpen] = useState(false);
   const navigate = useNavigate();
@@ -40,8 +38,7 @@ const ProfileSection = ({ removeCookie, cookies }) => {
   const redirectToProfile = () => {
     if (cookies?.UserType === "Admin") {
       navigate("/manage-profile");
-    }
-    else{
+    } else {
       navigate("/manage-account");
     }
   };
@@ -51,7 +48,7 @@ const ProfileSection = ({ removeCookie, cookies }) => {
         <Paper
           elevation={0}
           sx={{
-            height: "275px",
+            height:matches ? "271px":"100%",
             background: Dark00FF(cookies),
             border: CardBorder(cookies, "#1976D2"),
             borderRadius: 0,

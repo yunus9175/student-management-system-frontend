@@ -45,7 +45,7 @@ const UniqueIndex = () => {
                 sx={{ color: cookies.theme === "dark" ? "#fff" : "#1976D2" }}
               />
             }
-            text={"View Attendance Details"}
+            text={"View Attendance"}
             id={id}
           />{" "}
           <TopSection cookies={cookies} AttData={AttData} loading={loading} />

@@ -26,6 +26,7 @@ const PaperWrapper = ({ children, cookies, boxBGColor, icon, text }) => {
       <Box
         sx={{
           display: "flex",
+          alignItems:'center',
           padding: "5px",
           background: gradientBackground(boxBGColor),
           color: "#fff",

@@ -98,7 +98,7 @@ const ManageAttendanceByAdmin = () => {
                 sx={{ color: cookies.theme === "dark" ? "#fff" : "#1976D2" }}
               />
             }
-            text={"Manage Student's Attendance"}
+            text={"Manage Attendance"}
           />{" "}
           <FilterSection
             cookies={cookies}

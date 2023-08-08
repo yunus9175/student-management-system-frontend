@@ -250,7 +250,7 @@ const ManageDepartment = () => {
                 ml: 1,
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "end",
+                justifyContent: "flex-end",
               }}
             >
               <Button

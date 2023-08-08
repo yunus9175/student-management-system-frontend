@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CustomTheme from "../../Utils/CustomTheme";
 import MiniDrawer from "../Drawer";
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, useMediaQuery } from "@mui/material";
 import TitleBox from "../../Utils/TitleBox";
 import AddchartIcon from "@mui/icons-material/Addchart";
 import { useCookies } from "react-cookie";
@@ -19,6 +19,7 @@ import { ContainerStyle } from "../../Utils/stylingMethods";
 const UniqueStudentAttendance = () => {
   const { id } = useParams();
   const [cookies] = useCookies(["loggedIn", "UserId", "theme"]);
+    const matches = useMediaQuery("(min-width:600px)");
   const [studentAttendance, setStudentAttendance] = useState([]);
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState(new Date());
@@ -52,7 +53,7 @@ const UniqueStudentAttendance = () => {
                 sx={{ color: cookies.theme === "dark" ? "#fff" : "#1976D2" }}
               />
             }
-            text={"View Student's Monthly Attendance"}
+            text={"View Monthly Attendance"}
             id={id}
           />
           <DatePickerSection
@@ -60,6 +61,8 @@ const UniqueStudentAttendance = () => {
             setStartDate={setStartDate}
             endDate={endDate}
             setEndDate={setEndDate}
+            cookies={cookies}
+            matches={matches}
           />
           <StudentInfo cookies={cookies} data={studentAttendance} />
           {attendanceLengthChecker && (

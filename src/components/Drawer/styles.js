@@ -73,11 +73,19 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       paddingBottom: "10px",
       backgroundColor: Dark00(cookies),
       height: "97.9vh",
-      overflowY: "scroll",
-      scrollbarWidth: "none", // hide scrollbar on Firefox
+      overflowY: "scroll", // Use "scroll" to show the scrollbar always
+      scrollbarWidth: "none", // Hide scrollbar on Firefox
+      "-ms-overflow-style": "none", // Hide scrollbar on IE and Edge
       "&::-webkit-scrollbar": {
-        width: 0,
-        height: 0,
+        width: "10px", // Customize the width of the scrollbar
+        background: "#fff", // Customize the background color of the scrollbar track
+      },
+      "&::-webkit-scrollbar-thumb": {
+        background: "#CCCCCC", // Customize the color of the scrollbar thumb
+        borderRadius: "10px", // Customize the border radius of the thumb
+      },
+      "&::-webkit-scrollbar-thumb:hover": {
+        background: "#555", // Customize the color of the thumb on hover
       },
     },
     listItemBtn = {
@@ -85,15 +93,9 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       justifyContent: open ? "initial" : "center",
       px: 2.5,
       "&.Mui-selected": {
-        background:
-          cookies.theme === "dark"
-            ? "#292929"
-            : "#E7EBF0",
+        background: cookies.theme === "dark" ? "#292929" : "#E7EBF0",
         ":hover": {
-          background:
-            cookies.theme === "dark"
-              ? "#292929"
-              : "#E7EBF0",
+          background: cookies.theme === "dark" ? "#292929" : "#E7EBF0",
         },
       },
     },
@@ -112,7 +114,7 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       pb: 0,
     },
     appBar = {
-      background:gradientBackground("#1976D2"),
+      background: gradientBackground("#1976D2"),
       boxShadow: "none",
     },
     toolbarIconBtn = {

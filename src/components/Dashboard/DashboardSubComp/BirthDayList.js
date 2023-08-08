@@ -21,7 +21,7 @@ import { GET_BIRTHDAY } from "../../../ApiFunctions/students";
 import { errorHandler } from "../../../ApiFunctions/ErrorHandler";
 import { CardBorder, Dark00FF, DarkFFF } from "../../../Utils/CommonCookies";
 import { gradientBackground } from "../../../Utils/stylingMethods";
-
+import Scrollbar from "react-custom-scrollbars";
 const BirthDayList = ({ cookies, icon, title, bgColor, userData }) => {
   const matches = useMediaQuery("(min-width:900px)");
   const [value, setValue] = useState("student");
@@ -61,69 +61,65 @@ const BirthDayList = ({ cookies, icon, title, bgColor, userData }) => {
             borderRadius: 0,
             height: matches ? "231px" : "182px",
             paddingBottom: "10px",
-            overflowY: "scroll",
             background: Dark00FF(cookies),
             border: CardBorder(cookies, bgColor),
             borderBottomLeftRadius: "5px",
             borderBottomRightRadius: "5px",
-            scrollbarWidth: "none", // hide scrollbar on Firefox
-            "&::-webkit-scrollbar": {
-              width: 0,
-              height: 0,
-            },
           }}
         >
-          <List
-            sx={{
-              width: "100%",
-            }}
-          >
-            {data
-              .filter(
-                (i) =>
-                  i?.course === userData?.course &&
-                  i?.courseYear === userData?.courseYear
-              )
-              .map((item, index) => {
-                return (
-                  <Box key={index}>
-                    <ListItem>
-                      <ListItemAvatar>
-                        <Avatar
-                          src={item?.profileImage}
-                          sx={{ border: `1px solid ${bgColor}` }}
+          <Scrollbar style={{ height: "100%" }}>
+            <List
+              sx={{
+                width: "100%",
+              }}
+            >
+              {data
+                .filter(
+                  (i) =>
+                    i?.course === userData?.course &&
+                    i?.courseYear === userData?.courseYear
+                )
+                .map((item, index) => {
+                  return (
+                    <Box key={index}>
+                      <ListItem>
+                        <ListItemAvatar>
+                          <Avatar
+                            src={item?.profileImage}
+                            sx={{ border: `1px solid ${bgColor}` }}
+                          />
+                        </ListItemAvatar>
+                        <ListItemText
+                          primary={
+                            <Typography
+                              sx={{
+                                textTransform: "capitalize",
+                                fontSize: "14px",
+                                fontWeight: "bold",
+                                color: DarkFFF(cookies),
+                              }}
+                            >
+                              {item?.fullName}
+                            </Typography>
+                          }
+                          secondary={
+                            <Typography
+                              sx={{
+                                fontSize: "13px",
+                                color: DarkFFF(cookies),
+                              }}
+                            >
+                              {item?.email}
+                            </Typography>
+                          }
                         />
-                      </ListItemAvatar>
-                      <ListItemText
-                        primary={
-                          <Typography
-                            sx={{
-                              textTransform: "capitalize",
-                              fontSize: "14px",
-                              fontWeight: "bold",
-                              color: DarkFFF(cookies),
-                            }}
-                          >
-                            {item?.fullName}
-                          </Typography>
-                        }
-                        secondary={
-                          <Typography
-                            sx={{
-                              fontSize: "13px",
-                              color: DarkFFF(cookies),
-                            }}
-                          >
-                            {item?.email}
-                          </Typography>
-                        }
-                      />
-                    </ListItem>
-                    <Divider variant="inset" component="li" />
-                  </Box>
-                );
-              })}
-          </List>
+                      </ListItem>
+                      <Divider variant="inset" component="li" />
+                    </Box>
+                  );
+                })}
+            </List>
+          </Scrollbar>
         </Paper>
       );
     } else {
@@ -137,16 +133,11 @@ const BirthDayList = ({ cookies, icon, title, bgColor, userData }) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            overflowY: "scroll",
             background: Dark00FF(cookies),
             border: CardBorder(cookies, bgColor),
             borderBottomLeftRadius: "5px",
             borderBottomRightRadius: "5px",
-            scrollbarWidth: "none",borderTop: 'none',
-            "&::-webkit-scrollbar": {
-              width: 0,
-              height: 0,
-            },
+            borderTop: "none",
           }}
         >
           {" "}
@@ -184,7 +175,7 @@ const BirthDayList = ({ cookies, icon, title, bgColor, userData }) => {
               sx={{
                 borderBottom: 1,
                 borderColor: "divider",
-                background: Dark00FF(cookies)
+                background: Dark00FF(cookies),
               }}
             >
               <TabList
