@@ -78,7 +78,7 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       "-ms-overflow-style": "none", // Hide scrollbar on IE and Edge
       "&::-webkit-scrollbar": {
         width: "10px", // Customize the width of the scrollbar
-        background: "#fff", // Customize the background color of the scrollbar track
+        background: Dark00(cookies), // Customize the background color of the scrollbar track
       },
       "&::-webkit-scrollbar-thumb": {
         background: "#CCCCCC", // Customize the color of the scrollbar thumb

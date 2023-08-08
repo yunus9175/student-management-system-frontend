@@ -65,7 +65,7 @@ const UserDataList = ({
               "-ms-overflow-style": "none", // Hide scrollbar on IE and Edge
               "&::-webkit-scrollbar": {
                 width: "10px", // Customize the width of the scrollbar
-                background: "#fff", // Customize the background color of the scrollbar track
+                background: Dark00FF(cookies), // Customize the background color of the scrollbar track
               },
               "&::-webkit-scrollbar-thumb": {
                 background: "#CCCCCC", // Customize the color of the scrollbar thumb
@@ -76,51 +76,51 @@ const UserDataList = ({
               },
             }}
           >
-              <List
-                sx={{
-                  width: "100%",
-                }}
-              >
-                {filteredData.map((item, index) => {
-                  return (
-                    <Box key={index}>
-                      <ListItem>
-                        <ListItemAvatar>
-                          <Avatar
-                            src={item?.profileImage}
-                            sx={{ border: `1px solid ${bgColor}` }}
-                          />
-                        </ListItemAvatar>
-                        <ListItemText
-                          primary={
-                            <Typography
-                              sx={{
-                                textTransform: "capitalize",
-                                fontSize: "14px",
-                                fontWeight: "bold",
-                                color: DarkFFF(cookies),
-                              }}
-                            >
-                              {item?.fullName}
-                            </Typography>
-                          }
-                          secondary={
-                            <Typography
-                              sx={{
-                                fontSize: "13px",
-                                color: DarkFFF(cookies),
-                              }}
-                            >
-                              {item?.email}
-                            </Typography>
-                          }
+            <List
+              sx={{
+                width: "100%",
+              }}
+            >
+              {filteredData.map((item, index) => {
+                return (
+                  <Box key={index}>
+                    <ListItem>
+                      <ListItemAvatar>
+                        <Avatar
+                          src={item?.profileImage}
+                          sx={{ border: `1px solid ${bgColor}` }}
                         />
-                      </ListItem>
-                      <Divider variant="inset" component="li" />
-                    </Box>
-                  );
-                })}
-              </List>
+                      </ListItemAvatar>
+                      <ListItemText
+                        primary={
+                          <Typography
+                            sx={{
+                              textTransform: "capitalize",
+                              fontSize: "14px",
+                              fontWeight: "bold",
+                              color: DarkFFF(cookies),
+                            }}
+                          >
+                            {item?.fullName}
+                          </Typography>
+                        }
+                        secondary={
+                          <Typography
+                            sx={{
+                              fontSize: "13px",
+                              color: DarkFFF(cookies),
+                            }}
+                          >
+                            {item?.email}
+                          </Typography>
+                        }
+                      />
+                    </ListItem>
+                    <Divider variant="inset" component="li" />
+                  </Box>
+                );
+              })}
+            </List>
           </Paper>
         ) : (
           <Paper
