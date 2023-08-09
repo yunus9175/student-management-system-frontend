@@ -1,5 +1,4 @@
 import { Dark00, Dark00FF, DarkFFF } from "../../Utils/CommonCookies";
-import { gradientBackground } from "../../Utils/stylingMethods";
 
 export const DrawerStyle = (cookies, matches, upDown, open) => {
   const path = [

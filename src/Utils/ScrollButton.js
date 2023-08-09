@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Fab from "@mui/material/Fab";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { gradientBackground } from "./stylingMethods";
 
 function ScrollButton() {
   const [isVisible, setIsVisible] = useState(false);
