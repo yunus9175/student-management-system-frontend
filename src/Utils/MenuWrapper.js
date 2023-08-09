@@ -6,7 +6,7 @@ const MenuWrapper = ({ open, toggleDrawer, children, cookies }) => {
   return (
     <>
       <Drawer
-        anchor="right"
+        anchor={cookies.loggedIn === "true" ? "left" : "right"}
         open={open}
         onClose={toggleDrawer}
         ModalProps={{
@@ -19,9 +19,18 @@ const MenuWrapper = ({ open, toggleDrawer, children, cookies }) => {
           sx={{ width: 240, background: Dark00(cookies), height: "100vh" }}
           role="presentation"
         >
-          <IconButton onClick={toggleDrawer}>
-            <CloseIcon sx={{ color: DarkFF4F(cookies) }} />
-          </IconButton>
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              justifyContent:
+                cookies.loggedIn === "true" ? "flex-end" : "flex-start",
+            }}
+          >
+            <IconButton onClick={toggleDrawer}>
+              <CloseIcon sx={{ color: DarkFF4F(cookies) }} />
+            </IconButton>
+          </Box>
           {children}
         </Box>
       </Drawer>

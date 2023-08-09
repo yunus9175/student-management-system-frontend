@@ -32,17 +32,16 @@ function ScrollButton() {
     bottom: "20px",
     right: "20px",
     borderRadius: "50%",
-    background:gradientBackground("#1976D2"),
     color: "white",
-    width: "50px",
-    height: "50px",
+    width: "36px",
+    height: "36px",
     opacity: isVisible ? 1 : 0,
     visibility: isVisible ? "visible" : "hidden",
     transition: "all 0.3s ease",
   };
 
   return (
-    <Fab sx={buttonStyles} onClick={scrollToTop}>
+    <Fab sx={buttonStyles} color="primary"  onClick={scrollToTop}>
       <KeyboardArrowUpIcon />
     </Fab>
   );

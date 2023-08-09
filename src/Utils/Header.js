@@ -10,12 +10,12 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useMediaQuery } from "@mui/material";
 import ModeComp from "./ModeComp";
 import BeforeLoginMenuBody from "./BeforeLoginMenuBody";
-import { gradientBackground } from "./stylingMethods";
+import { useCookies } from "react-cookie";
 const Header = () => {
   const matches = useMediaQuery("(min-width:600px)");
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
-
+  const [cookies] = useCookies(["theme"]);
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -30,13 +30,14 @@ const Header = () => {
             color="text.primary"
             onClick={() => navigate(link)}
             sx={{
+              fontSize:'14px',
               cursor: "pointer",
               textTransform: "capitalize",
               padding: "5px",
               textDecoration: "none",
               width: "100%",
               textAlign: "center",
-              color: "#fff",
+              color: cookies.theme === "dark" ? "#fff" : "#1976D2",
               "&:hover": {
                 background: !matches && "#1976D2",
                 color: !matches && "#fff",
@@ -53,18 +54,20 @@ const Header = () => {
     <AppBar
       position="fixed"
       sx={{
-        background:gradientBackground("#1976D2"),
+        background: cookies.theme === "dark" ? "#292929" : "#E7EBF0",
         color: "#fff",
-        height: "64px",
       }}
       elevation={0}
     >
       <Toolbar sx={{ flexWrap: "wrap" }}>
         <Typography
-          variant="h6"
-          color="inherit"
           noWrap
-          sx={{ flexGrow: 1, cursor: "pointer" }}
+          sx={{
+            flexGrow: 1,
+            cursor: "pointer",
+            fontSize: "24px",
+            color: cookies.theme === "dark" ? "#fff" : "#1976D2",
+          }}
           onClick={() => {
             window.location.pathname !== "/admin/sign_in" && navigate("/");
           }}
@@ -85,7 +88,13 @@ const Header = () => {
                   aria-haspopup="true"
                   aria-expanded={open ? "true" : undefined}
                 >
-                  <MenuIcon sx={{ width: 24, height: 24, color: "#fff" }} />
+                  <MenuIcon
+                    sx={{
+                      width: 24,
+                      height: 24,
+                      color: cookies.theme === "dark" ? "#fff" : "#1976D2",
+                    }}
+                  />
                 </IconButton>
               </>
             ) : (

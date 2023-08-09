@@ -142,7 +142,6 @@ const MiniDrawer = ({ children, setQuery, query, data, value }) => {
           setUpDown={setUpDown}
           styles={styles}
           matches={matches}
-          icon={<PowerSettingsNewIcon />}
           logoutFn={logoutFn}
           dialogOpen={dialogOpen}
           DialogClose={handleClose}

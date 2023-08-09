@@ -3,7 +3,6 @@ import Avatar from "@mui/material/Avatar";
 import { useNavigate } from "react-router-dom";
 import { navLinks } from "../../../Utils/navLinks";
 import ModeComp from "../../../Utils/ModeComp";
-import DialogBox from "../../../Utils/DialogBox";
 import MenuWrapper from "../../../Utils/MenuWrapper";
 import {
   ListItemIcon,
@@ -18,11 +17,6 @@ import { DarkFF4F } from "../../../Utils/CommonCookies";
 const AfterLoginMenuBody = ({
   open,
   toggleDrawer,
-  icon,
-  logoutFn,
-  dialogOpen,
-  DialogClose,
-  setDialogOpen,
   setUpDown,
   searchCondition,
   upDown,
@@ -105,28 +99,15 @@ const AfterLoginMenuBody = ({
                 </ListItem>
               );
             })}
-          <ListItem
-            onClick={() => {
-              setDialogOpen(true);
-              toggleDrawer();
-            }}
-            disablePadding
-          >
-            <ListItemButton>
-              <ListItemIcon sx={{ color: DarkFF4F(cookies) }}>
-                {icon}
-              </ListItemIcon>
-              <ListItemText
-                primary={"Logout"}
-                sx={{
-                  color: DarkFF4F(cookies),
-                }}
-              />
-            </ListItemButton>
-          </ListItem>
+         
         </List>
         <Box
-          sx={{
+          sx={cookies.loggedIn === "true" ?{
+            position: "absolute",
+            bottom: 0,
+            right: 0,
+            p: 1,
+          }:{
             position: "absolute",
             bottom: 0,
             left: 0,
@@ -136,12 +117,6 @@ const AfterLoginMenuBody = ({
           <ModeComp />
         </Box>
       </MenuWrapper>
-      <DialogBox
-        open={dialogOpen}
-        handleClose={DialogClose}
-        handleChange={logoutFn}
-        text={"Are your sure you want to exit?"}
-      />
     </>
   );
 };

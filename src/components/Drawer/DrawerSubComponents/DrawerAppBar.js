@@ -13,6 +13,8 @@ import SearchAppBar from "../../../Utils/SearchAppBar";
 import ClearIcon from "@mui/icons-material/Clear";
 import AfterLoginMenuBody from "./AfterLoginMenuBody";
 import ModeComp from "../../../Utils/ModeComp.js";
+import DialogBox from "../../../Utils/DialogBox.js";
+import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 const DrawerAppBar = ({
   open,
   handleDrawerOpen,
@@ -74,117 +76,127 @@ const DrawerAppBar = ({
     }, [matches]);
 
   return (
-    <AppBar position="fixed" open={open} sx={styles.appBar}>
-      <Toolbar sx={{ padding: !matches && "0px 6px" }}>
-        {matches && (
+    <>
+      <AppBar position="fixed" open={open} sx={styles.appBar}>
+        <Toolbar sx={{ padding: !matches && "0px 6px" }}>
           <IconButton
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
+            onClick={matches ? handleDrawerOpen : toggleDrawer}
             edge="start"
             sx={styles.toolbarIconBtn}
           >
             <MenuIcon sx={styles.toolbarIconBtnAvatar} />
           </IconButton>
-        )}
-        <Box sx={styles.innerBox3}>
-          <Typography variant="h6" noWrap component="div" sx={styles.titleTypo}>
-            StudentsTracker
-          </Typography>
-          <Box sx={styles.childBox1}>
-            {matches &&
-              searchCondition() &&
-              data?.length > 0 &&
-              value === 1 && (
-                <SearchAppBar
-                  setQuery={setQuery}
-                  query={query}
-                  cookies={cookies}
-                  matches={matches.toString()}
-                />
+
+          <Box sx={styles.innerBox3}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={styles.titleTypo}
+            >
+              StudentsTracker
+            </Typography>
+            <Box sx={styles.childBox1}>
+              {matches &&
+                searchCondition() &&
+                data?.length > 0 &&
+                value === 1 && (
+                  <SearchAppBar
+                    setQuery={setQuery}
+                    query={query}
+                    cookies={cookies}
+                    matches={matches.toString()}
+                  />
+                )}
+              {matches && (
+                <Tooltip
+                  title={`${userData?.fullName && userData?.fullName}`}
+                  placement="bottom"
+                >
+                  <IconButton onClick={() => handleNavigate()}>
+                    <StyledBadge
+                      overlap="circular"
+                      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                      variant="dot"
+                    >
+                      {userData?.profileImage ? (
+                        <CustomAvatar>
+                          {" "}
+                          <Avatar alt="profile" src={userData?.profileImage} />
+                        </CustomAvatar>
+                      ) : (
+                        <CustomAvatar>
+                          {loading ? (
+                            <CircularProgress color="inherit" />
+                          ) : (
+                            <>
+                              {avatarName(
+                                `${userData?.fullName && userData?.fullName}`
+                              )}
+                            </>
+                          )}
+                        </CustomAvatar>
+                      )}
+                    </StyledBadge>
+                  </IconButton>
+                </Tooltip>
               )}
-            {matches && (
-              <Tooltip
-                title={`${userData?.fullName && userData?.fullName}`}
-                placement="bottom"
-              >
-                <IconButton onClick={() => handleNavigate()}>
-                  <StyledBadge
-                    overlap="circular"
-                    anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                    variant="dot"
-                  >
-                    {userData?.profileImage ? (
-                      <CustomAvatar>
-                        {" "}
-                        <Avatar alt="profile" src={userData?.profileImage} />
-                      </CustomAvatar>
-                    ) : (
-                      <CustomAvatar>
-                        {loading ? (
-                          <CircularProgress color="inherit" />
-                        ) : (
-                          <>
-                            {avatarName(
-                              `${userData?.fullName && userData?.fullName}`
-                            )}
-                          </>
-                        )}
-                      </CustomAvatar>
-                    )}
-                  </StyledBadge>
+              {matches && <ModeComp />}
+              {!matches && (
+                <IconButton
+                  sx={styles.toolbarIconBtn1}
+                  onClick={() => {
+                    setDialogOpen(true);
+                  }}
+                >
+                  <PowerSettingsNewIcon sx={styles.toolbarIconBtnAvatar} />
                 </IconButton>
-              </Tooltip>
-            )}
-            {matches && <ModeComp />}
-            {!matches && (
-              <IconButton
-                aria-label="menu"
-                onClick={toggleDrawer}
-                size="small"
-                aria-controls={open ? "account-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
-              >
-                <MenuIcon sx={styles.toolbarIconBtnAvatar} />
-              </IconButton>
-            )}
+              )}
+            </Box>
           </Box>
-        </Box>
-      </Toolbar>
-      {!matches && upDown && data?.length > 0 && value === 1 && (
-        <Box sx={styles.searchToolbar}>
-          {searchCondition() && (
-            <SearchAppBar
-              setQuery={setQuery}
-              query={query}
-              matches={matches}
-              cookies={cookies}
-            />
-          )}
-          <Tooltip title="Close search" placement="bottom">
-            <IconButton onClick={() => removeSearch()}>
-              <ClearIcon sx={styles.searchIcon} />
-            </IconButton>
-          </Tooltip>
-        </Box>
-      )}
-      <AfterLoginMenuBody
-        open={drawerOpen}
-        toggleDrawer={toggleDrawer}
-        icon={icon}
-        logoutFn={logoutFn}
-        dialogOpen={dialogOpen}
-        DialogClose={DialogClose}
-        setDialogOpen={setDialogOpen}
-        setUpDown={setUpDown}
-        searchCondition={searchCondition}
-        upDown={upDown}
-        data={data}
-        userData={userData}
-        handleNavigate={handleNavigate}
-        cookies={cookies}
+        </Toolbar>
+        {!matches && upDown && data?.length > 0 && value === 1 && (
+          <Box sx={styles.searchToolbar}>
+            {searchCondition() && (
+              <SearchAppBar
+                setQuery={setQuery}
+                query={query}
+                matches={matches}
+                cookies={cookies}
+              />
+            )}
+            <Tooltip title="Close search" placement="bottom">
+              <IconButton onClick={() => removeSearch()}>
+                <ClearIcon sx={styles.searchIcon} />
+              </IconButton>
+            </Tooltip>
+          </Box>
+        )}
+        <AfterLoginMenuBody
+          open={drawerOpen}
+          toggleDrawer={toggleDrawer}
+          icon={icon}
+          logoutFn={logoutFn}
+          dialogOpen={dialogOpen}
+          DialogClose={DialogClose}
+          setDialogOpen={setDialogOpen}
+          setUpDown={setUpDown}
+          searchCondition={searchCondition}
+          upDown={upDown}
+          data={data}
+          userData={userData}
+          handleNavigate={handleNavigate}
+          cookies={cookies}
+        />
+      </AppBar>
+      <DialogBox
+        open={dialogOpen}
+        handleClose={DialogClose}
+        handleChange={logoutFn}
+        text={"Are your sure you want to exit?"}
       />
-    </AppBar>
+    </>
   );
 };
 

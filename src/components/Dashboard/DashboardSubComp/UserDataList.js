@@ -60,19 +60,19 @@ const UserDataList = ({
               border: CardBorder(cookies, bgColor),
               borderBottomLeftRadius: "5px",
               borderBottomRightRadius: "5px",
-              overflowY: "scroll", // Use "scroll" to show the scrollbar always
-              scrollbarWidth: "none", // Hide scrollbar on Firefox
-              "-ms-overflow-style": "none", // Hide scrollbar on IE and Edge
+              overflowY: "scroll",
+              scrollbarWidth: "none",
+              "-ms-overflow-style": "none",
               "&::-webkit-scrollbar": {
-                width: "10px", // Customize the width of the scrollbar
-                background: Dark00FF(cookies), // Customize the background color of the scrollbar track
+                width: "2px",
+                background: Dark00FF(cookies),
               },
               "&::-webkit-scrollbar-thumb": {
-                background: "#CCCCCC", // Customize the color of the scrollbar thumb
-                borderRadius: "10px", // Customize the border radius of the thumb
+                background: bgColor,
+                borderRadius: "10px",
               },
               "&::-webkit-scrollbar-thumb:hover": {
-                background: "#555", // Customize the color of the thumb on hover
+                background: "#555",
               },
             }}
           >

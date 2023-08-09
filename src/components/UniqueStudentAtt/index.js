@@ -19,7 +19,7 @@ import { ContainerStyle } from "../../Utils/stylingMethods";
 const UniqueStudentAttendance = () => {
   const { id } = useParams();
   const [cookies] = useCookies(["loggedIn", "UserId", "theme"]);
-    const matches = useMediaQuery("(min-width:600px)");
+  const matches = useMediaQuery("(min-width:600px)");
   const [studentAttendance, setStudentAttendance] = useState([]);
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState(new Date());
@@ -42,7 +42,7 @@ const UniqueStudentAttendance = () => {
   }, [dispatch, id, startDate, endDate]);
 
   const attendanceLengthChecker =
-    studentAttendance?.attendanceCounterArray?.length >0
+    studentAttendance?.attendanceCounterArray?.length > 0;
   return (
     <CustomTheme>
       <MiniDrawer>

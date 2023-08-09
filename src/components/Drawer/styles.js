@@ -34,7 +34,7 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       display: "flex",
     },
     drawerHeader1 = {
-      background: "#292929",
+      background: cookies.theme === "dark" ? "#292929" : "#E7EBF0",
     },
     innerBox1 = {
       width: "100%",
@@ -49,7 +49,7 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
     iconBtnAvatar = {
       width: 28,
       height: 28,
-      color: "#fff",
+      color: cookies.theme === "dark" ? "#fff" : "#1976D2",
     },
     dynamicList = {
       pt: 0,
@@ -73,19 +73,19 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       paddingBottom: "10px",
       backgroundColor: Dark00(cookies),
       height: "97.9vh",
-      overflowY: "scroll", // Use "scroll" to show the scrollbar always
-      scrollbarWidth: "none", // Hide scrollbar on Firefox
-      "-ms-overflow-style": "none", // Hide scrollbar on IE and Edge
+      overflowY: "scroll",
+      scrollbarWidth: "none",
+      "-ms-overflow-style": "none",
       "&::-webkit-scrollbar": {
-        width: "10px", // Customize the width of the scrollbar
-        background: Dark00(cookies), // Customize the background color of the scrollbar track
+        width: "10px",
+        background: cookies.theme === "dark" ? "#4F4F4F" : "#CCCCCC",
       },
       "&::-webkit-scrollbar-thumb": {
-        background: "#CCCCCC", // Customize the color of the scrollbar thumb
-        borderRadius: "10px", // Customize the border radius of the thumb
+        background: cookies.theme === "dark" ? "#4F4F4F" : "#CCCCCC",
+        borderRadius: "10px",
       },
       "&::-webkit-scrollbar-thumb:hover": {
-        background: "#555", // Customize the color of the thumb on hover
+        background: cookies.theme === "dark" ? "#4F4F4F" : "#CCCCCC",
       },
     },
     listItemBtn = {
@@ -114,7 +114,7 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       pb: 0,
     },
     appBar = {
-      background: gradientBackground("#1976D2"),
+      background: cookies.theme === "dark" ? "#292929" : "#E7EBF0",
       boxShadow: "none",
     },
     toolbarIconBtn = {
@@ -122,10 +122,13 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       color: "#fff",
       ...(open && { display: "none" }),
     },
+    toolbarIconBtn1 = {
+      color: "#fff",
+    },
     toolbarIconBtnAvatar = {
       width: 30,
       height: 30,
-      color: "#fff",
+      color: cookies.theme === "dark" ? "#fff" : "#1976D2",
     },
     innerBox3 = {
       width: "100%",
@@ -134,7 +137,7 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       justifyContent: "space-between",
     },
     titleTypo = {
-      color: "#fff",
+      color: cookies.theme === "dark" ? "#fff" : "#1976D2",
       fontSize: "24px",
     },
     childBox1 = {
@@ -167,7 +170,7 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
     innerAvatar,
     listItemText,
     appBar,
-    toolbarIconBtn,
+    toolbarIconBtn,toolbarIconBtn1,
     toolbarIconBtnAvatar,
     innerBox3,
     titleTypo,
