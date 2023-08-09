@@ -90,7 +90,7 @@ const DrawerAppBar = ({
 
           <Box sx={styles.innerBox3}>
             <Typography
-              variant="h6"
+              variant={matches && "h6"}
               noWrap
               component="div"
               sx={styles.titleTypo}

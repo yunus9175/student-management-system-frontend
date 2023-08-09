@@ -33,7 +33,7 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       display: "flex",
     },
     drawerHeader1 = {
-      background: cookies.theme === "dark" ? "#292929" : "#E7EBF0",
+      background: cookies.theme === "dark" ? "#292929" : "#1976D2",
     },
     innerBox1 = {
       width: "100%",
@@ -48,7 +48,7 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
     iconBtnAvatar = {
       width: 28,
       height: 28,
-      color: cookies.theme === "dark" ? "#fff" : "#1976D2",
+      color: "#fff",
     },
     dynamicList = {
       pt: 0,
@@ -77,7 +77,7 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       "-ms-overflow-style": "none",
       "&::-webkit-scrollbar": {
         width: "10px",
-        background: cookies.theme === "dark" ? "#4F4F4F" : "#CCCCCC",
+        background: cookies.theme === "dark" ? "#292929" : "#E7EBF0",
       },
       "&::-webkit-scrollbar-thumb": {
         background: cookies.theme === "dark" ? "#4F4F4F" : "#CCCCCC",
@@ -113,11 +113,11 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       pb: 0,
     },
     appBar = {
-      background: cookies.theme === "dark" ? "#292929" : "#E7EBF0",
+      background: cookies.theme === "dark" ? "#292929" : "#1976D2",
       boxShadow: "none",
     },
     toolbarIconBtn = {
-      marginRight: 5,
+      marginRight: matches ?5:1,
       color: "#fff",
       ...(open && { display: "none" }),
     },
@@ -125,9 +125,9 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       color: "#fff",
     },
     toolbarIconBtnAvatar = {
-      width: 30,
-      height: 30,
-      color: cookies.theme === "dark" ? "#fff" : "#1976D2",
+      width: matches ?30:24,
+      height: matches ?30:24,
+      color: "#fff",
     },
     innerBox3 = {
       width: "100%",
@@ -136,8 +136,8 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       justifyContent: "space-between",
     },
     titleTypo = {
-      color: cookies.theme === "dark" ? "#fff" : "#1976D2",
-      fontSize: "24px",
+      color:  "#fff",
+      fontSize: matches ? "24px" : "20px",
     },
     childBox1 = {
       display: "flex",
@@ -169,7 +169,8 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
     innerAvatar,
     listItemText,
     appBar,
-    toolbarIconBtn,toolbarIconBtn1,
+    toolbarIconBtn,
+    toolbarIconBtn1,
     toolbarIconBtnAvatar,
     innerBox3,
     titleTypo,

@@ -37,7 +37,7 @@ const Header = () => {
               textDecoration: "none",
               width: "100%",
               textAlign: "center",
-              color: cookies.theme === "dark" ? "#fff" : "#1976D2",
+              color: "#fff",
               "&:hover": {
                 background: !matches && "#1976D2",
                 color: !matches && "#fff",
@@ -54,7 +54,7 @@ const Header = () => {
     <AppBar
       position="fixed"
       sx={{
-        background: cookies.theme === "dark" ? "#292929" : "#E7EBF0",
+        background: cookies.theme === "dark" ? "#292929" : "#1976D2",
         color: "#fff",
       }}
       elevation={0}
@@ -65,8 +65,8 @@ const Header = () => {
           sx={{
             flexGrow: 1,
             cursor: "pointer",
-            fontSize: "24px",
-            color: cookies.theme === "dark" ? "#fff" : "#1976D2",
+            fontSize:matches? "24px":"20px",
+            color:"#fff",
           }}
           onClick={() => {
             window.location.pathname !== "/admin/sign_in" && navigate("/");
@@ -92,7 +92,7 @@ const Header = () => {
                     sx={{
                       width: 24,
                       height: 24,
-                      color: cookies.theme === "dark" ? "#fff" : "#1976D2",
+                      color:"#fff",
                     }}
                   />
                 </IconButton>

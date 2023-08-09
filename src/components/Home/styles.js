@@ -10,6 +10,7 @@ export const HomeStyle = (cookies,matches) => {
       backgroundPosition: "center",
       background: `url(https://source.unsplash.com/random/?city,evening)`,
       borderBottom: CardBorder(cookies, "#1976D2"),
+      marginTop: !matches &&'-4px',
     },
     innerBox = {
       textAlign: "left",
@@ -21,7 +22,7 @@ export const HomeStyle = (cookies,matches) => {
     typo1 = {
       margin: 0,
       fontWeight: 400,
-      fontSize: matches ?"3rem":"2rem",
+      fontSize: matches ? "3rem" : "2rem",
       lineHeight: 1.167,
       letterSpacing: "0em",
       marginBottom: "0.35em",
