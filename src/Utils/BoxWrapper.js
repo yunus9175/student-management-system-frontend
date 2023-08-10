@@ -6,7 +6,6 @@ import CustomTheme from "./CustomTheme";
 import Header from "./Header";
 import { Grid, Paper, Typography } from "@mui/material";
 import LinkComp from "./LinkComp";
-import { Dark00 } from "./CommonCookies";
 const BoxWrapper = ({
   cookies,
   text,
@@ -22,56 +21,79 @@ const BoxWrapper = ({
       <Header />
       <Box
         sx={{
-          height: "100vh",
+          // height: "100vh",
           width: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: Dark00(cookies),
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: "100%",
+          background: `url(https://source.unsplash.com/random/?city,evening)`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          opacity: 0.92,
         }}
       >
-        <Container component="main" maxWidth={maxWidth}>
-          <CssBaseline />
-          <Paper
-            elevation={0}
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              // p: 2,
-              background: Dark00(cookies),
-            }}
-          >
-            <Typography
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: "100%",
+            transition: "all .85s ease-in-out",
+            opacity: 0.92,
+            backgroundColor: "#292",
+          }}
+        >
+          <Container component="main" maxWidth={maxWidth}>
+            <CssBaseline />
+            <Paper
+              elevation={0}
               sx={{
-                color: cookies.theme === "dark" ? "#fff" : "#1976D2",
-                fontSize: "32px",
-                fontWeight: "bold",
-                textAlign: "center",
+                display: "flex",
+                flexDirection: "column",
+                alignItems:"center",
+                padding: "25px",
+                boxShadow: "0px 0px 16px 9px rgba(0, 0, 0, 0.07)",
+                background: "rgba(255, 255, 255, .13)",
+                opacity: 0.92,
               }}
             >
-              {text}
-            </Typography>
-            <Box
-              component="form"
-              onSubmit={handleSubmit}
-              noValidate
-              sx={{
-                mt: 3,
-                width: "-webkit-fill-available",
-              }}
-            >
-              {children}
-            </Box>
-            {userType === "teacher" && (
-              <Grid container maxWidth="xs" justifyContent={"center"}>
-                <Grid item>
-                  <LinkComp text={linkText} path={path} cookies={cookies} />
+              <Typography
+                sx={{
+                  color: "#fff",
+                  fontSize: "32px",
+                  fontWeight: "bold",
+                }}
+              >
+                {text}
+              </Typography>
+              <Box
+                component="form"
+                onSubmit={handleSubmit}
+                noValidate
+                sx={{
+                  mt: 3,
+                  width: "-webkit-fill-available",
+                }}
+              >
+                {children}
+              </Box>
+              {userType === "teacher" && (
+                <Grid container maxWidth="xs" justifyContent={"center"}>
+                  <Grid item>
+                    <LinkComp text={linkText} path={path} cookies={cookies} />
+                  </Grid>
                 </Grid>
-              </Grid>
-            )}
-          </Paper>
-        </Container>
+              )}
+            </Paper>
+          </Container>
+        </Box>
       </Box>
     </CustomTheme>
   );

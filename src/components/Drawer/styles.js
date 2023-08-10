@@ -113,7 +113,7 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       pb: 0,
     },
     appBar = {
-      background: cookies.theme === "dark" ? "#292929" : "#1976D2",
+      background:"#292929",
       boxShadow: "none",
     },
     toolbarIconBtn = {
@@ -127,6 +127,7 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
     toolbarIconBtnAvatar = {
       width: matches ?30:24,
       height: matches ?30:24,
+
       color: "#fff",
     },
     innerBox3 = {

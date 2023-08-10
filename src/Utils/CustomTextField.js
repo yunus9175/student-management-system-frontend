@@ -14,6 +14,9 @@ const CustomTextField = ({
   admin,
 }) => {
   const [cookies] = useCookies(["theme"]);
+    const path = ["/sign_in", "/forgot-password", "/reset-password"].includes(
+      window.location.pathname
+    );
   const styleForTextFiled = () => {
     if (name === "course" && admin === false) {
       return {
@@ -47,7 +50,7 @@ const CustomTextField = ({
     <CustomTheme>
       <Typography
         sx={{
-          color: DarkFFF(cookies),
+          color:path ? "#FFF": DarkFFF(cookies),
           fontWeight: "500",
           textTransform: "capitalize",
         }}

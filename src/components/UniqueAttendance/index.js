@@ -22,6 +22,7 @@ const UniqueIndex = () => {
   const dispatch = useDispatch();
   const [cookies] = useCookies(["loggedIn", "UserId", "theme"]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     setLoading(true);
     GET_ATTENDANCE_BY_ID(id)
@@ -50,7 +51,12 @@ const UniqueIndex = () => {
           />{" "}
           <TopSection cookies={cookies} AttData={AttData} loading={loading} />
           <AttendanceInfo cookies={cookies} AttData={AttData} />
-          <StudentsList cookies={cookies} AttData={AttData} id={id} />
+          <StudentsList
+            cookies={cookies}
+            data={AttData?.attendance}
+            id={id}
+            loading={loading}
+          />
           <AttendanceGraphChart cookies={cookies} AttData={AttData} />
         </Container>
       </MiniDrawer>

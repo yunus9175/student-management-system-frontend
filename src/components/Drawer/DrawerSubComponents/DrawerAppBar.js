@@ -49,6 +49,7 @@ const DrawerAppBar = ({
         "/manage-queries",
         "/manage-teachers",
         "/manage-students-account",
+        "/manage-students-attendance",
       ].includes(window.location.pathname)
     ) {
       return true;

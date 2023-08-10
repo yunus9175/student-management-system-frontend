@@ -5,9 +5,9 @@ export const SearchWithFuse = (keysToSearch, query, data) => {
     keys: keysToSearch,
     threshold: 0.1,
   });
-  const results = query ? fuse.search(query) : [];
+  const results = query ? fuse?.search(query) : [];
 
-  const newResults = query ? results.map((result) => result.item) : data;
+  const newResults = query ? results?.map((result) => result.item) : data;
 
   return newResults;
 };

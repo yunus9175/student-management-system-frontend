@@ -19,6 +19,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Collapse from "@mui/material/Collapse";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { ExpandMore } from "./stylingMethods";
+import ContentPasteGoIcon from "@mui/icons-material/ContentPasteGo";
 import {
   CardBorder,
   Dark00,
@@ -51,6 +52,7 @@ const CustomCard = ({
     textOverflow: "ellipsis",
     color: DarkFFF(cookies),
     textTransform: "capitalize",
+    fontWeight: "bold",
   };
   const hiddenStyle1 = {
     width: matches ? "100%" : "17rem",
@@ -58,6 +60,7 @@ const CustomCard = ({
     whiteSpace: "nowrap",
     textOverflow: "ellipsis",
     color: DarkFFF(cookies),
+    fontWeight: "bold",
   };
   // const randomIndex = Math.floor(Math.random() * colors.length);
   // const bgColor = colors[randomIndex];
@@ -71,14 +74,34 @@ const CustomCard = ({
     }
   };
 
+const ManageAtt = {
+  Image: item?.teacherProfile,
+  FullName: item?.teacherName,
+  row1: `${item?.course} (${item?.courseYear})`,
+  row2: item?.date,
+};
+
+const OtherComp = {
+  Image: item?.profileImage,
+  FullName: item?.fullName,
+  row1: item?.email,
+  row2: item?.phone,
+};
+
+const data = parentComp === "Manage Attendance" ? ManageAtt : OtherComp;
+
+const handleRedirect =()=>{
+  if(["View Records", "Manage Teachers"].includes(parentComp)){
+    return  handleEdit(item._id);
+  }
+  else if (["Manage Attendance"].includes(parentComp)){
+      return  handleEdit(item._id,item?.active);
+  }
+
+}
   return (
     <Card elevation={0} sx={cookieCondition()}>
-      <CardActionArea
-        onClick={() => {
-          ["View Records", "Manage Teachers"].includes(parentComp) &&
-            handleEdit(item._id);
-        }}
-      >
+      <CardActionArea onClick={() => handleRedirect()}>
         <CardMedia
           component="div"
           sx={{
@@ -90,7 +113,7 @@ const CustomCard = ({
           }}
         >
           <Avatar
-            src={item.profileImage}
+            src={data.Image}
             sx={{
               background: Dark00(cookies),
               color: "#1976D2",
@@ -100,27 +123,30 @@ const CustomCard = ({
               border: "1px solid #1976D2",
             }}
           >
-            {CardName(`${item.fullName}`)}
+            {CardName(`${data.FullName}`)}
           </Avatar>
         </CardMedia>
         <CardContent sx={{ pl: 2, pr: 2, pt: 0, pb: 0 }}>
           <Typography
             gutterBottom
-            variant="h5"
+            variant="h6"
             component="div"
             sx={hiddenStyle}
           >
-            {item?.fullName}
+            {data.FullName}
           </Typography>
           <Typography variant="body2" color="text.secondary" sx={hiddenStyle1}>
-            {item?.email}
+            {data.row1}
           </Typography>
           <Typography
             variant="body2"
             color="text.secondary"
-            sx={{ color: DarkFFF(cookies), textTransform: "capitalize" }}
+            sx={{
+              color: DarkFFF(cookies),
+              textTransform: "capitalize",
+            }}
           >
-            {item?.phone}
+            {data.row2}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -135,11 +161,17 @@ const CustomCard = ({
           pb: 1,
         }}
       >
-        {(parentComp === "View Records" ||
-          parentComp === "Manage Teachers") && (
+        {["View Records", "Manage Teachers"].includes(parentComp) && (
           <Tooltip title="Edit" placement="top">
             <IconButton onClick={() => handleEdit(item._id)}>
               <EditIcon sx={{ fontSize: 20, color: IconColor(cookies) }} />
+            </IconButton>
+          </Tooltip>
+        )}
+        {parentComp === "Manage Attendance" && (
+          <Tooltip title={"View Attendance"} placement="top">
+            <IconButton onClick={() => handleEdit(item?._id, item?.active)}>
+              <ContentPasteGoIcon sx={{ fontSize: 20 }} />
             </IconButton>
           </Tooltip>
         )}

@@ -66,7 +66,7 @@ export default function SignIn() {
 
   return (
     <BoxWrapper
-      text={"Sign In"}
+      text={"Welcome back!"}
       handleSubmit={handleSubmit}
       linkText={"Forgot password"}
       path={"/forgot-password"}

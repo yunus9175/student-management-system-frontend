@@ -23,6 +23,8 @@ const CustomTheme = ({ children }) => {
   const colorCondition = () => {
     if (path && dark) {
       return "#D3D3D3 ";
+    } else {
+      return "#B5B5B5 ";
     }
   };
 
@@ -44,8 +46,16 @@ const CustomTheme = ({ children }) => {
           root: {
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
+                transition:
+                  "transform 0.35s cubic-bezier(0.36, 1, 0.62, 0.98) 0.085s, opacity 0.3s ease-in-out 0.2s, background 0.15s ease-in-out, border 0.3s ease-in-out",
+                opacity: 1,
                 color: colorCondition(),
-                borderColor: colorCondition(), // change border color
+                fontSize: 16,
+                padding: "14px 10px",
+                background: "rgba(255, 255, 255, 0.25)",
+                border: "1px solid",
+                borderRadius: 1,
+                borderColor: colorCondition(), // cha
               },
             },
             "& .MuiOutlinedInput-root.Mui-disabled": {
@@ -61,7 +71,7 @@ const CustomTheme = ({ children }) => {
               borderColor: DarkFFF(cookies),
             },
             "& .MuiOutlinedInput-input": {
-              color: DarkFF4F(cookies),
+              color: path ? "#FFF !important" : DarkFF4F(cookies),
             },
             "& .MuiOutlinedInput-input.Mui-disabled": {
               WebkitTextFillColor: DarkFFF(cookies),
@@ -84,21 +94,29 @@ const CustomTheme = ({ children }) => {
           root: {
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
-                color: colorCondition(),
-                borderColor: colorCondition(), // change border color
+                transition:
+                  "transform 0.35s cubic-bezier(0.36, 1, 0.62, 0.98) 0.085s, opacity 0.3s ease-in-out 0.2s, background 0.15s ease-in-out, border 0.3s ease-in-out",
+                opacity: 1,
+                color: "#fff",
+                fontSize: 16,
+                padding: "14px 10px",
+                background: "rgba(255, 255, 255, 0.25)",
+                border: "1px solid",
+                borderColor: colorCondition(),
+                borderRadius: 1,
               },
             },
             "& .MuiOutlinedInput-root:hover fieldset": {
-              borderColor: colorCondition(),
+              borderColor: "#fff",
             },
             "& .MuiOutlinedInput-input": {
-              color: DarkFF4F(cookies),
+              color: "#fff",
             },
             "& .MuiInputLabel-root": {
-              color: DarkFF4F(cookies),
+              color: "#fff",
             },
             "& .MuiInputLabel-root.Mui-focused": {
-              color: DarkFF4F(cookies),
+              color: "#fff",
             },
           },
         },
@@ -173,8 +191,33 @@ const CustomTheme = ({ children }) => {
       MuiLoadingButton: {
         styleOverrides: {
           root: {
+            color: "#fff",
+            padding: "6px 10px",
+            marginBottom: 0,
+            textTransform: "uppercase",
+            cursor: "pointer",
+            border: "none",
+            background: "#1976D2",
+            borderRadius: 2,
             "&:hover": {
-              backgroundColor: "#3f3f3f",
+              background: "#1976D2",
+            },
+          },
+        },
+      },
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            color: "#fff !important",
+            padding: "6px 10px",
+            marginBottom: 0,
+            textTransform: "uppercase",
+            cursor: "pointer",
+            border: "none",
+            borderRadius: 2,
+            background: "#1976D2",
+            "&:hover": {
+              background: "#1976D2",
             },
           },
         },

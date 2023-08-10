@@ -3,47 +3,19 @@ import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import PaperWrapper from "../../../Utils/PaperWrapper";
 import {
   Grid,
-  Tooltip,
   Box,
   Avatar,
-  IconButton,
-  Paper,
-  Chip,
+  CardContent,
+  CardActionArea,
+  Card,
   Typography,
+  Tooltip,
+  IconButton,
 } from "@mui/material";
+import { CardBorder, DarkFFF } from "../../../Utils/CommonCookies";
 import ContentPasteGoIcon from "@mui/icons-material/ContentPasteGo";
-import { Dark00FF, DarkFF4F, DarkFFF } from "../../../Utils/CommonCookies";
 import { useNavigate } from "react-router-dom";
-const CommonUI = ({ value, cookies, title }) => {
-  return (
-    <Grid
-      item
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        color: DarkFF4F(cookies),
-        textTransform: "capitalize",
-      }}
-      xs={12}
-      sm={6}
-      md={2}
-    >
-      <Tooltip title={title} placement="top">
-        <Box sx={{ cursor: "default" }}> {value}</Box>
-      </Tooltip>
-    </Grid>
-  );
-};
-
-const StudentsList = ({ cookies, AttData, id }) => {
-  const buttonStyles = {
-    borderRadius: "50%",
-    color: "white",
-    width: "40px",
-    height: "40px",
-    transition: "all 0.3s ease",
-  };
+const StudentsList = ({ cookies, data, id }) => {
   const navigate = useNavigate();
 
   const RedirectToStudentAttendance = (_id) => {
@@ -57,69 +29,49 @@ const StudentsList = ({ cookies, AttData, id }) => {
       icon={<PeopleOutlineIcon />}
       text={"Students list"}
     >
-      {AttData?.attendance?.length > 0 ? (
-        AttData?.attendance?.map((item, index) => {
-          const topColor = item?.attendance ? "#4CAF50" : "#EF5350";
-          return (
-            <Paper
-              elevation={0}
-              sx={{
-                background: Dark00FF(cookies),
-                border: `1px solid ${topColor}`,
-                m: 2,
-                p: 2,
-              }}
-            >
-              <Grid
-                container
-                spacing={2}
-                direction="row"
-                justifyContent="center"
-                alignItems="center"
-                keys={index}
-              >
-                <CommonUI
-                  value={item?.rollNo}
-                  cookies={cookies}
-                  title={"RollNo"}
-                />
-                <CommonUI
-                  value={<Avatar src={item?.profileImage} sx={buttonStyles} />}
-                  cookies={cookies}
-                  title={null}
-                />
-                <CommonUI
-                  value={item?.fullName}
-                  cookies={cookies}
-                  title={"Student name"}
-                />
-                <CommonUI
-                  value={item?.gender}
-                  cookies={cookies}
-                  title={"Gender"}
-                />
-                <CommonUI
-                  value={
-                    item?.attendance === true ? (
-                      <Chip label="Present" color="success" />
-                    ) : (
-                      <Chip label="Absent" color="error" />
-                    )
-                  }
-                  cookies={cookies}
-                  title={"Attendance status"}
-                />
-                <CommonUI
-                  value={
+      <Grid
+        container
+        spacing={2}
+        sx={{p:2}}
+      >
+        {data?.length > 0 ? (
+          data?.map((item, index) => {
+            const topColor = item?.attendance ? "#4CAF50" : "#EF5350",
+              bottomColor = item?.attendance ? "#1B5E20" : "#B71C1C";
+            return (
+              <Grid item keys={index} xs={12} sm={6} md={4}>
+                <Card
+                  sx={{
+                    background: topColor,
+                    border: CardBorder(cookies, bottomColor),
+                  }}
+                  elevation={0}
+                >
+                  <CardActionArea>
                     <Box
                       sx={{
                         display: "flex",
                         alignItems: "center",
-                        justifyContent: "end",
+                        justifyContent: "space-evenly",
                         flexDirection: "row",
+                        p: 2,
                       }}
                     >
-                      <Tooltip title={"View Attendance"} placement="top">
+                      <Avatar
+                        sx={{
+                          background: bottomColor,
+                          width: 80,
+                          height: 80,
+                          fontSize: 36,
+                        }}
+                      >
+                        {data?.attendance ? "A" : "P"}
+                      </Avatar>
+
+                      <Tooltip
+                        title={`View ${item?.fullName}'s Attendance`}
+                        placement="top"
+                      >
                         <IconButton
                           onClick={() => RedirectToStudentAttendance(item?._id)}
                         >
@@ -127,35 +79,44 @@ const StudentsList = ({ cookies, AttData, id }) => {
                         </IconButton>
                       </Tooltip>
                     </Box>
-                  }
-                  cookies={cookies}
-                  title={null}
-                />
+
+                    <CardContent sx={{ p: "10px", background: bottomColor }}>
+                      <Typography
+                        sx={{
+                          fontSize: "20px",
+                          color: "#fff",
+                          textAlign: "center",
+                        }}
+                      >
+                        {item?.fullName}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
               </Grid>
-            </Paper>
-          );
-        })
-      ) : (
-        <Box
-          sx={{
-         display:'flex',
-         justifyContent:'center',
-         alignItems:'center',
-         width:'100%'
-         
-          }}
-        >
-          <Typography
+            );
+          })
+        ) : (
+          <Box
             sx={{
-              color: DarkFFF(cookies),
-              fontWeight: "bold",
-              textTransform: "capitalize",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
             }}
           >
-            No Data Found
-          </Typography>
-        </Box>
-      )}
+            <Typography
+              sx={{
+                color: DarkFFF(cookies),
+                fontWeight: "bold",
+                textTransform: "capitalize",
+              }}
+            >
+              No Data Found
+            </Typography>
+          </Box>
+        )}
+      </Grid>
     </PaperWrapper>
   );
 };

@@ -23,11 +23,14 @@ const CustomPassword = ({
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+    const path = ["/sign_in", "/forgot-password", "/reset-password"].includes(
+      window.location.pathname
+    );
   return (
     <CustomTheme>
       <Typography
         sx={{
-          color: DarkFF4F(cookies),
+          color: path ? "#FFF !important" : DarkFF4F(cookies),
           fontWeight: "500",
           textTransform: "capitalize",
         }}
@@ -53,7 +56,7 @@ const CustomPassword = ({
                 onClick={handleClickShowPassword}
                 onMouseDown={handleMouseDownPassword}
                 edge="end"
-                sx={{ color: DarkFFF(cookies) }}
+                sx={{ color: path ? "#FFF !important" : DarkFFF(cookies) }}
               >
                 {showPassword ? <VisibilityOff /> : <Visibility />}
               </IconButton>

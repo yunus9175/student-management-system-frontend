@@ -2,7 +2,7 @@ import Badge from "@mui/material/Badge";
 import { styled, alpha } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
-import { Avatar, IconButton, TableCell, tableCellClasses } from "@mui/material";
+import { Avatar, IconButton, TableCell, tableCellClasses,Button } from "@mui/material";
 import InputBase from "@mui/material/InputBase";
 import Switch from "@mui/material/Switch";
 import { DarkFFF, Light4F, LightBorder } from "./CommonCookies";
@@ -282,6 +282,29 @@ export const ContainerStyle = {
 
 
 export const gradientBackground = (color) =>{
- return `radial-gradient(circle at center, ${color} , #292929)`;
+ return `radial-gradient(circle at center, ${color} , ${color})`;
 }
  
+export const BootstrapButton = styled(Button)(({ cookies }) =>({
+  boxShadow: "none",
+  textTransform: "none",
+  fontSize: 16,
+  padding: "5px",
+  minWidth:'40px !important',
+  border: "1px solid",
+  background: cookies.theme === "dark" ? "#292929" : "#1976D2",
+  borderColor: cookies.theme === "dark" ? "#1976D2" : "#292929",
+  "&:hover": {
+    backgroundColor: "#0069d9",
+    borderColor: "#0062cc",
+    boxShadow: "none",
+  },
+  "&:active": {
+    boxShadow: "none",
+    backgroundColor: "#0062cc",
+    borderColor: "#005cbf",
+  },
+  "&:focus": {
+    boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
+  },
+}));

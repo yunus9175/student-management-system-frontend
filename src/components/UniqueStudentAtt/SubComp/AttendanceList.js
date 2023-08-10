@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { CardBorder } from "../../../Utils/CommonCookies";
 import moment from "moment";
-const AttendanceList = ({ cookies, data, index }) => {
+const AttendanceList = ({ cookies, data }) => {
   const topColor = data?.attendance ? "#4CAF50" : "#EF5350",
     bottomColor = data?.attendance ? "#1B5E20" : "#B71C1C";
   return (

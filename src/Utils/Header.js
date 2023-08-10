@@ -10,12 +10,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useMediaQuery } from "@mui/material";
 import ModeComp from "./ModeComp";
 import BeforeLoginMenuBody from "./BeforeLoginMenuBody";
-import { useCookies } from "react-cookie";
 const Header = () => {
   const matches = useMediaQuery("(min-width:600px)");
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
-  const [cookies] = useCookies(["theme"]);
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -54,7 +52,7 @@ const Header = () => {
     <AppBar
       position="fixed"
       sx={{
-        background: cookies.theme === "dark" ? "#292929" : "#1976D2",
+        background:"#292929",
         color: "#fff",
       }}
       elevation={0}

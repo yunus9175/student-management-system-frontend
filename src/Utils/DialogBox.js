@@ -21,7 +21,7 @@ const DialogBox = ({ open, handleClose, handleChange,text }) => {
         keepMounted
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
-        sx={{zIndex:1000}}
+        sx={{ zIndex: 1000 }}
       >
         <Box
           sx={{
@@ -31,16 +31,26 @@ const DialogBox = ({ open, handleClose, handleChange,text }) => {
           }}
         >
           <DialogTitle>{text}</DialogTitle>
-          <DialogActions>
+          <DialogActions sx={{display:'flex',alignItems:'center',justifyContent:'center'}}>
             <Button
               onClick={() => handleClose()}
-              sx={{ color: DarkFFF(cookies) }}
+              sx={{
+                background: "#DC143C",
+                ":hover": {
+                  background: "#DC143C !important",
+                },
+              }}
             >
               No
             </Button>
             <Button
               onClick={() => handleChange()}
-              sx={{ color: DarkFFF(cookies) }}
+              sx={{
+                background: "#1976D2",
+                ":hover": {
+                  background: "#1976D2 !important",
+                },
+              }}
             >
               Yes
             </Button>

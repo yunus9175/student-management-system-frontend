@@ -22,7 +22,7 @@ const CardContainer = ({
     alignItems: "center",
   };
   const ConditionOnGrid = () => {
-    if (data.length < 1) {
+    if (data?.length < 1) {
       return styleOnGrid;
     }
   };
@@ -31,7 +31,7 @@ const CardContainer = ({
 
   const filteredData = isAdmin
     ? data
-    : data.filter(
+    : data?.filter(
         (i) =>
           i.active === true &&
           i?.course === userData?.course &&
@@ -40,9 +40,9 @@ const CardContainer = ({
 
   return (
     <Box sx={{ mt: 1 }}>
-      {filteredData.length > 0 ? (
+      {filteredData?.length > 0 ? (
         <Grid container spacing={2} sx={ConditionOnGrid}>
-          {filteredData.map((item, index) => {
+          {filteredData?.map((item, index) => {
             return (
               <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
                 <CustomCard

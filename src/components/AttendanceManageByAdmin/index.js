@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CustomTheme from "../../Utils/CustomTheme";
-import { Box, Container } from "@mui/material";
+import { Container } from "@mui/material";
 import TitleBox from "../../Utils/TitleBox";
 import MiniDrawer from "../Drawer";
 import { Equalizer } from "@mui/icons-material";
@@ -13,9 +13,10 @@ import {
 import { errorHandler } from "../../ApiFunctions/ErrorHandler";
 import DialogBox from "../../Utils/DialogBox";
 import { openSnackbar } from "../../app/reducer/Snackbar";
-import FilterSection from "./SubComp/FilterSection";
-import CardSection from "./SubComp/CardSection";
 import { ContainerStyle } from "../../Utils/stylingMethods";
+import CardContainer from "../../Utils/CardContainer";
+import { SearchWithFuse } from "../../Utils/SearchWithFuse";
+import { useNavigate } from "react-router-dom";
 
 const ManageAttendanceByAdmin = () => {
   const [cookies] = useCookies(["loggedIn", "UserId", "theme"]);
@@ -28,12 +29,9 @@ const ManageAttendanceByAdmin = () => {
   const formattedDate = isoDate.slice(0, 10);
   const [active, setActive] = useState(false);
   const [ID, setID] = useState("");
-  const [filterData, setFilterData] = useState({
-    course: "bca",
-    courseYear: "first year",
-    date: formattedDate,
-  });
-  const [filterFlag, setFilterFlag] = useState(false);
+  const [query, setQuery] = useState("");
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
   const getAttendance = () => {
     GET_ATTENDANCE()
       .then((res) => {
@@ -44,15 +42,17 @@ const ManageAttendanceByAdmin = () => {
       });
   };
   useEffect(() => {
+    setLoading(true);
     GET_ATTENDANCE()
       .then((res) => {
+        setLoading(false);
         setAttData(res.data);
       })
       .catch((err) => {
+        setLoading(false);
         errorHandler(err?.status, err?.data, dispatch);
       });
   }, [cookies, userData, dispatch, formattedDate]);
-
 
   const handleClose = () => {
     setDialogOpen(false);
@@ -80,17 +80,35 @@ const ManageAttendanceByAdmin = () => {
         errorHandler(err?.status, err?.data, dispatch);
       });
   };
-  const newFilterData = filterFlag
-    ? AttData.filter(
-        (i) =>
-          i?.course === filterData?.course &&
-          i?.courseYear === filterData?.courseYear &&
-          i?.date === filterData?.date
-      )
-    : AttData;
+
+  const newResults = SearchWithFuse(
+    ["course", "courseYear", "teacherName", "date"],
+    query,
+    AttData
+  );
+
+  const handleRedirect = (id, active) => {
+    if (active === true) {
+      navigate(`/manage-students-attendance/${id}`);
+    } else {
+      dispatch(
+        openSnackbar({
+          message: "Please activate attendance first.",
+          severity: "error",
+        })
+      );
+    }
+  };
+
   return (
     <CustomTheme>
-      <MiniDrawer>
+      <MiniDrawer
+        setQuery={setQuery}
+        query={query}
+        data={AttData}
+        flag={false}
+        value={1}
+      >
         <Container maxWidth="xl" sx={ContainerStyle}>
           <TitleBox
             icon={
@@ -99,25 +117,16 @@ const ManageAttendanceByAdmin = () => {
               />
             }
             text={"Manage Attendance"}
-          />{" "}
-          <FilterSection
-            cookies={cookies}
-            setFormData={setFilterData}
-            formData={filterData}
-            filterFlag={filterFlag}
-            setFilterFlag={setFilterFlag}
           />
-          {newFilterData?.map((item, index) => {
-            return (
-              <Box key={index}>
-                <CardSection
-                  cookies={cookies}
-                  handleActive={handleActive}
-                  item={item}
-                />
-              </Box>
-            );
-          })}
+          <CardContainer
+            setQuery={setQuery}
+            query={query}
+            parentComp={"Manage Attendance"}
+            handleEdit={handleRedirect}
+            handleActive={handleActive}
+            data={newResults}
+            loading={loading}
+          />
         </Container>
         <DialogBox
           open={dialogOpen}
