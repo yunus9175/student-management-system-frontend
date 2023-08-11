@@ -20,11 +20,11 @@ const CourseCard = ({ item, cookies, handleEdit, handleActive }) => {
       return {
         background: Dark00FF(cookies),
         color: "#fff",
-        border: "1px solid #1976D2",
+        border: "1px solid #2C497F",
       };
     } else {
       return {
-        border: "1px solid #1976D2",
+        border: "1px solid #2C497F",
       };
     }
   };

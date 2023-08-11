@@ -32,7 +32,7 @@ const Footer = ({ cookies }) => {
         background: Dark004F(cookies),
         p: "30px 0px",
         mt: "-20px",
-        borderTop: CardBorder(cookies, "#1976D2"),
+        borderTop: CardBorder(cookies, "#2C497F"),
         zIndex: 0,
         position: "relative",
         color: DarkFFF(cookies),

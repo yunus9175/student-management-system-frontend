@@ -14,7 +14,7 @@ function App() {
           {" "}
           <LinearProgress
             sx={{
-              background: gradientBackground("#1976D2"),
+              background: gradientBackground("#2C497F"),
             }}
           />
         </div>

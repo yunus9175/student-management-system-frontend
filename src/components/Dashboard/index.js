@@ -73,7 +73,7 @@ const Dashboard = () => {
           <TitleBox
             icon={
               <DashboardIcon
-                sx={{ color: cookies.theme === "dark" ? "#fff" : "#1976D2" }}
+                sx={{ color: cookies.theme === "dark" ? "#fff" : "#2C497F" }}
               />
             }
             text={"Dashboard"}
@@ -119,7 +119,7 @@ const Dashboard = () => {
               removeCookie={removeCookie}
               cookies={cookies}
               matches={matches}
-              bgColor={"#1976D2"}
+              bgColor={"#2C497F"}
               title={"Your profile details"}
               icon={<Person sx={{ mr: 1 }} />}
               loading={loading}

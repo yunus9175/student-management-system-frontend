@@ -239,10 +239,10 @@ const AddAttendance = ({
                 minWidth: "120px",
                 textTransform: "capitalize",
                 color: "#fff",
-                background: gradientBackground("#1976D2"),
+                background: gradientBackground("#2C497F"),
                 "&:hover": {
                   color: "#fff",
-                  background: gradientBackground("#1976D2"),
+                  background: gradientBackground("#2C497F"),
                 },
               }}
               onClick={handleSubmit}

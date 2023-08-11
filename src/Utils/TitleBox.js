@@ -93,7 +93,7 @@ const TitleBox = ({ icon, text, data, fileName, id }) => {
       sx={{
         p: "10px",
         mb: 2,
-        mt:1,
+        mt: 1,
         background: Dark00FF(cookies),
       }}
     >
@@ -126,8 +126,8 @@ const TitleBox = ({ icon, text, data, fileName, id }) => {
             {icon}
             <Typography
               sx={{
-                color: cookies.theme === "dark" ? "#fff" : "#1976D2",
-                fontSize:matches ? "20px":"18px",
+                color: cookies.theme === "dark" ? "#fff" : "#2C497F",
+                fontSize: matches ? "20px" : "18px",
                 ml: 1,
               }}
             >
@@ -145,13 +145,13 @@ const TitleBox = ({ icon, text, data, fileName, id }) => {
           >
             {matches ? (
               <Button
-                variant="outlined"
+                variant="text"
                 startIcon={<ArrowBackIcon />}
                 sx={{
                   textTransform: "capitalize",
-                  color: cookies.theme === "dark" ? "#fff" : "#1976D2",
+                  color: cookies.theme === "dark" ? "#fff" : "#2C497F",
                   background:
-                    cookies.theme === "dark" && gradientBackground("#1976D2"),
+                    cookies.theme === "dark" && gradientBackground("#2C497F"),
                 }}
                 onClick={() => BackFunction()}
               >

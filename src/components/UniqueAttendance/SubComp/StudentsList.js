@@ -1,4 +1,4 @@
-import React, {useState, memo } from "react";
+import React, { useState, memo } from "react";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import PaperWrapper from "../../../Utils/PaperWrapper";
 import {
@@ -27,11 +27,7 @@ const StudentsList = ({ cookies, data, id }) => {
     localStorage.setItem("attendance_id", id);
   };
 
-  const newResults = SearchWithFuse(
-    ["attendance", "fullName"],
-    query,
-    data
-  );
+  const newResults = SearchWithFuse(["attendance", "fullName"], query, data);
 
   return (
     <PaperWrapper
@@ -40,12 +36,14 @@ const StudentsList = ({ cookies, data, id }) => {
       icon={<PeopleOutlineIcon />}
       text={"Students list"}
     >
-      <StudentSearch
-        cookies={cookies}
-        setQuery={setQuery}
-        query={query}
-        matches={matches}
-      />
+      {data?.length > 0 && (
+        <StudentSearch
+          cookies={cookies}
+          setQuery={setQuery}
+          query={query}
+          matches={matches}
+        />
+      )}
       <Grid container spacing={2} sx={{ p: 2 }}>
         {newResults?.length > 0 ? (
           newResults?.map((item, index) => {
@@ -107,7 +105,9 @@ const StudentsList = ({ cookies, data, id }) => {
                         <IconButton
                           onClick={() => RedirectToStudentAttendance(item?._id)}
                         >
-                          <ContentPasteGoIcon sx={{ fontSize: 20, color: "#fff",}} />
+                          <ContentPasteGoIcon
+                            sx={{ fontSize: 20, color: "#fff" }}
+                          />
                         </IconButton>
                       </Tooltip>
                     </CardContent>

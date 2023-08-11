@@ -103,7 +103,7 @@ const Contact = ({ Home, cookies }) => {
             position: "relative",
             borderRadius: "5px",
             background: Dark00FF(cookies),
-            border: CardBorder(cookies, "#1976D2"),
+            border: CardBorder(cookies, "#2C497F"),
           }}
         >
           <Grid container component="main" sx={{ borderRadius: "5px" }}>

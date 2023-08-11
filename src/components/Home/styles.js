@@ -9,7 +9,7 @@ export const HomeStyle = (cookies,matches) => {
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
       background: `url(https://source.unsplash.com/random/?city,evening)`,
-      borderBottom: CardBorder(cookies, "#1976D2"),
+      borderBottom: CardBorder(cookies, "#2C497F"),
       marginTop: !matches &&'-4px',
     },
     innerBox = {
@@ -54,7 +54,7 @@ export const HomeStyle = (cookies,matches) => {
         webkitBoxShadow: "inset 0 0 6px rgba(0,0,0,0.00)",
       },
       "&::-webkit-scrollbar-thumb": {
-        backgroundColor: "#1976D2",
+        backgroundColor: "#2C497F",
         outline: "1px solid slategrey",
       },
 

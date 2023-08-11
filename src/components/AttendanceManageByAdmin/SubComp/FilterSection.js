@@ -44,7 +44,7 @@ const FilterSection = ({
     top: "140px",
     right: "40px",
     borderRadius: "50%",
-    background:gradientBackground("#1976D2"),
+    background:gradientBackground("#2C497F"),
     color: "white",
     width: "40px",
     height: "40px",

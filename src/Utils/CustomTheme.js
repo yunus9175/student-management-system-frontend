@@ -21,20 +21,23 @@ const CustomTheme = ({ children }) => {
   const dark = cookies.theme === "dark";
 
   const colorCondition = () => {
-    if (path && dark) {
+    if (path) {
+      return "#D3D3D3 ";
+    }
+    if (dark) {
       return "#D3D3D3 ";
     } else {
-      return "#B5B5B5 ";
+      return "#4f4f4f ";
     }
   };
 
   const theme = createTheme({
     palette: {
       primary: {
-        main: "#1976D2",
+        main: "#2C497F",
       },
       secondary: {
-        main: "#1976D2",
+        main: "#2C497F",
       },
     },
     components: {
@@ -110,7 +113,7 @@ const CustomTheme = ({ children }) => {
               borderColor: dark ? colorCondition() : "#B5B5B5",
             },
             "& .MuiOutlinedInput-input": {
-              color: dark ? colorCondition() : "#4f4f4f!important",
+              color: colorCondition(),
             },
             "& .MuiInputLabel-root": {
               color: dark ? colorCondition() : "#4f4f4f!important",
@@ -182,9 +185,9 @@ const CustomTheme = ({ children }) => {
       MuiTooltip: {
         styleOverrides: {
           tooltip: {
-            color: "#1976D2",
+            color: "#2C497F",
             backgroundColor: "#fff",
-            border: "1px solid #1976D2",
+            border: "1px solid #2C497F",
             fontWeight: "bolder",
           },
         },
@@ -198,10 +201,10 @@ const CustomTheme = ({ children }) => {
             textTransform: "uppercase",
             cursor: "pointer",
             border: "none",
-            background: "#1976D2",
+            background: "#2C497F",
             borderRadius: 2,
             "&:hover": {
-              background: "#1976D2",
+              background: "#2C497F",
             },
           },
         },
@@ -215,9 +218,9 @@ const CustomTheme = ({ children }) => {
             textTransform: "uppercase",
             cursor: "pointer",
             borderRadius: 2,
-            background: "#1976D2",
+            background: "#2C497F",
             "&:hover": {
-              background: "#1976D2",
+              background: "#2C497F",
             },
           },
         },

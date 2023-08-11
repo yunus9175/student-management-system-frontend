@@ -71,12 +71,12 @@ const ExcelExport = ({ userData, data, fileName }) => {
 
   return matches ? (
     <Button
-      variant="outlined"
+      variant="text"
       startIcon={<FileDownloadIcon />}
       sx={{
         textTransform: "capitalize",
-        color: cookies.theme === "dark" ? "#fff" : "#1976D2",
-        background: cookies.theme === "dark" && gradientBackground("#1976D2"),
+        color: cookies.theme === "dark" ? "#fff" : "#2C497F",
+        background: cookies.theme === "dark" && gradientBackground("#2C497F"),
       }}
       onClick={exportToExcel}
     >

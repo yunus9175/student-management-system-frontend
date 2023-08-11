@@ -69,7 +69,7 @@ const CustomCard = ({
       return {
         background: Dark00FF(cookies),
         color: "#fff",
-        border: CardBorder(cookies, "#1976D2"),
+        border: CardBorder(cookies, "#2C497F"),
       };
     }
   };
@@ -116,11 +116,11 @@ const handleRedirect =()=>{
             src={data.Image}
             sx={{
               background: Dark00(cookies),
-              color: "#1976D2",
+              color: "#2C497F",
               width: 80,
               height: 80,
               fontSize: "40px",
-              border: "1px solid #1976D2",
+              border: "1px solid #2C497F",
             }}
           >
             {CardName(`${data.FullName}`)}
@@ -202,12 +202,12 @@ const handleRedirect =()=>{
               aria-expanded={expanded}
               aria-label="show more"
             >
-              <ExpandMoreIcon sx={{ color: "#1976D2" }} />
+              <ExpandMoreIcon sx={{ color: "#2C497F" }} />
             </ExpandMore>
             {isAdmin && (
               <Tooltip title={"Reply"} placement="top">
                 <IconButton onClick={() => handleClickOpen(item._id)}>
-                  <ReplyIcon sx={{ color: "#1976D2" }} />
+                  <ReplyIcon sx={{ color: "#2C497F" }} />
                 </IconButton>
               </Tooltip>
             )}

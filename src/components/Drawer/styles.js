@@ -33,7 +33,7 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       display: "flex",
     },
     drawerHeader1 = {
-      background: cookies.theme === "dark" ? "#292929" : "#1976D2",
+      background: cookies.theme === "dark" ? "#292929" : "#2C497F",
     },
     innerBox1 = {
       width: "100%",
@@ -57,7 +57,7 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       justifyContent: "space-between",
       height: "100vh",
       background: cookies.theme === "dark" ? "#4f4f4f" : "#fff",
-      // borderRight: cookies.theme === "dark" && "1px solid #1976D2",
+      // borderRight: cookies.theme === "dark" && "1px solid #2C497F",
     },
     dynamicListBox = {
       paddingTop: !matches && upDown ? "3rem" : 0,
@@ -104,16 +104,16 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       justifyContent: "center",
       width: 30,
       height: 30,
-      color: cookies.theme === "dark" ? "#fff" : "#1976D2",
+      color: cookies.theme === "dark" ? "#fff" : "#2C497F",
       alignItems: "center",
     },
     listItemText = {
       opacity: open ? 1 : 0,
-      color: cookies.theme === "dark" ? "#fff" : "#1976D2",
+      color: cookies.theme === "dark" ? "#fff" : "#2C497F",
       pb: 0,
     },
     appBar = {
-      background: cookies.theme === "dark" ? "#292929" : "#1976D2",
+      background: cookies.theme === "dark" ? "#292929" : "#2C497F",
       boxShadow: "none",
     },
     toolbarIconBtn = {

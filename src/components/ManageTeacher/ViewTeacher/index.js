@@ -157,7 +157,7 @@ const ViewTeachers = () => {
           <TitleBox
             icon={
               <PersonSearch
-                sx={{ color: cookies.theme === "dark" ? "#fff" : "#1976D2" }}
+                sx={{ color: cookies.theme === "dark" ? "#fff" : "#2C497F" }}
               />
             }
             text={"View Teacher"}

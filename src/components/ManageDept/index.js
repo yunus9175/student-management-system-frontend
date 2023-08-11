@@ -235,7 +235,7 @@ const ManageDepartment = () => {
           <TitleBox
             icon={
               <AccountBalance
-                sx={{ color: cookies.theme === "dark" ? "#fff" : "#1976D2" }}
+                sx={{ color: cookies.theme === "dark" ? "#fff" : "#2C497F" }}
               />
             }
             text={"Manage Department"}
@@ -258,10 +258,10 @@ const ManageDepartment = () => {
                 startIcon={<AddIcon />}
                 sx={{
                   textTransform: "capitalize",
-                  color: cookies.theme === "dark" ? "#fff" : "#1976D2",
+                  color: cookies.theme === "dark" ? "#fff" : "#2C497F",
                   background:
                     cookies.theme === "dark" &&
-                   gradientBackground("#1976D2"),
+                   gradientBackground("#2C497F"),
                 }}
                 onClick={handleClickOpen}
               >

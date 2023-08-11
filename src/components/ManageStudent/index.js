@@ -123,7 +123,7 @@ const ManageStudent = () => {
           <TitleBox
             icon={
               <People
-                sx={{ color: cookies.theme === "dark" ? "#fff" : "#1976D2" }}
+                sx={{ color: cookies.theme === "dark" ? "#fff" : "#2C497F" }}
               />
             }
             text={"Manage Students"}
@@ -159,8 +159,8 @@ const ManageStudent = () => {
                     startIcon={<ArrowBack />}
                     sx={{
                       textTransform: "capitalize",
-                      color: cookies.theme === "dark" ? "#fff" : "#1976D2",
-                      background: cookies.theme === "dark" && "#1976D2",
+                      color: cookies.theme === "dark" ? "#fff" : "#2C497F",
+                      background: cookies.theme === "dark" && "#2C497F",
                     }}
                     onClick={backFun}
                   >
@@ -190,10 +190,10 @@ const ManageStudent = () => {
                         textTransform: "capitalize",
                         color: cookies.theme === "dark" && "#fff",
                         "&.Mui-selected": {
-                          color: cookies.theme === "dark" ? "#fff" : "#1976D2",
+                          color: cookies.theme === "dark" ? "#fff" : "#2C497F",
                           background: cookies.theme === "dark" && "#4f4f4f",
                           border:
-                            cookies.theme === "dark" && "1px solid #1976D2",
+                            cookies.theme === "dark" && "1px solid #2C497F",
                           borderRadius: "5px",
                         },
                       }}
@@ -216,10 +216,10 @@ const ManageStudent = () => {
                         textTransform: "capitalize",
                         color: cookies.theme === "dark" && "#fff",
                         "&.Mui-selected": {
-                          color: cookies.theme === "dark" ? "#fff" : "#1976D2",
+                          color: cookies.theme === "dark" ? "#fff" : "#2C497F",
                           background: cookies.theme === "dark" && "#4f4f4f",
                           border:
-                            cookies.theme === "dark" && "1px solid #1976D2",
+                            cookies.theme === "dark" && "1px solid #2C497F",
                           borderRadius: "5px",
                         },
                       }}

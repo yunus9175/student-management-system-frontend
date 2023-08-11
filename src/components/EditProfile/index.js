@@ -33,7 +33,7 @@ const EditProfile = () => {
           <TitleBox
             icon={
               <ManageAccounts
-                sx={{ color: cookies.theme === "dark" ? "#fff" : "#1976D2" }}
+                sx={{ color: cookies.theme === "dark" ? "#fff" : "#2C497F" }}
               />
             }
             text={"Manage Account"}
@@ -63,9 +63,9 @@ const EditProfile = () => {
                     textTransform: "capitalize",
                     color: cookies.theme === "dark" && "#fff",
                     "&.Mui-selected": {
-                      color: cookies.theme === "dark" ? "#fff" : "#1976D2",
+                      color: cookies.theme === "dark" ? "#fff" : "#2C497F",
                       background: cookies.theme === "dark" && "#4f4f4f",
-                      border: cookies.theme === "dark" && "1px solid #1976D2",
+                      border: cookies.theme === "dark" && "1px solid #2C497F",
                       borderRadius: "5px",
                     },
                   }}
@@ -88,9 +88,9 @@ const EditProfile = () => {
                     textTransform: "capitalize",
                     color: cookies.theme === "dark" && "#fff",
                     "&.Mui-selected": {
-                      color: cookies.theme === "dark" ? "#fff" : "#1976D2",
+                      color: cookies.theme === "dark" ? "#fff" : "#2C497F",
                       background: cookies.theme === "dark" && "#4f4f4f",
-                      border: cookies.theme === "dark" && "1px solid #1976D2",
+                      border: cookies.theme === "dark" && "1px solid #2C497F",
                       borderRadius: "5px",
                     },
                   }}

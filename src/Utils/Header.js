@@ -10,7 +10,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useMediaQuery } from "@mui/material";
 import ModeComp from "./ModeComp";
 import BeforeLoginMenuBody from "./BeforeLoginMenuBody";
+import { useCookies } from "react-cookie";
 const Header = () => {
+  const [cookies] = useCookies(["theme"]);
   const matches = useMediaQuery("(min-width:600px)");
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
@@ -37,7 +39,7 @@ const Header = () => {
               textAlign: "center",
               color: "#fff",
               "&:hover": {
-                background: !matches && "#1976D2",
+                background: !matches && "#2C497F",
                 color: !matches && "#fff",
               },
             }}
@@ -52,7 +54,7 @@ const Header = () => {
     <AppBar
       position="fixed"
       sx={{
-        background:"#292929",
+        background: cookies.theme === "dark" ? "#292929" : "#2C497F",
         color: "#fff",
       }}
       elevation={0}
@@ -63,8 +65,8 @@ const Header = () => {
           sx={{
             flexGrow: 1,
             cursor: "pointer",
-            fontSize:matches? "24px":"20px",
-            color:"#fff",
+            fontSize: matches ? "24px" : "20px",
+            color: "#fff",
           }}
           onClick={() => {
             window.location.pathname !== "/admin/sign_in" && navigate("/");
@@ -90,7 +92,7 @@ const Header = () => {
                     sx={{
                       width: 24,
                       height: 24,
-                      color:"#fff",
+                      color: "#fff",
                     }}
                   />
                 </IconButton>

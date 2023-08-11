@@ -24,7 +24,7 @@ export const Dark00 = (cookies) => {
 
 
 export const IconColor = (cookies) => {
-  return cookies.theme === "dark" ? "#E7EBF0" : "#1976D2";
+  return cookies.theme === "dark" ? "#E7EBF0" : "#2C497F";
 };
 
 export const BeforeLoginCard = (cookies) => {

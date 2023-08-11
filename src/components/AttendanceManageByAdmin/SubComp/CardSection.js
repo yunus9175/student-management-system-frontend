@@ -36,7 +36,7 @@ const CardSection = ({ item, cookies, handleActive }) => {
   const topColor = item.active ? "#4CAF50" : "#EF5350";
   const buttonStyles = {
     borderRadius: "50%",
-    background:gradientBackground("#1976D2"),
+    background:gradientBackground("#2C497F"),
     color: "white",
     width: "40px",
     height: "40px",

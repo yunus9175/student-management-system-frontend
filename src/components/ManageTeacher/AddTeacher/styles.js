@@ -19,9 +19,9 @@ export const AddTeacherStyle = (matches) => {
       top: 70,
       cursor: "pointer",
       borderRadius: "50%",
-      background: "#1976D2",
+      background: "#2C497F",
       "&:hover": {
-        background: "#1976D2",
+        background: "#2C497F",
       },
     },
     iconBtnAvatar = {

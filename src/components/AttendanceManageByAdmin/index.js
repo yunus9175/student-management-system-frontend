@@ -113,7 +113,7 @@ const ManageAttendanceByAdmin = () => {
           <TitleBox
             icon={
               <Equalizer
-                sx={{ color: cookies.theme === "dark" ? "#fff" : "#1976D2" }}
+                sx={{ color: cookies.theme === "dark" ? "#fff" : "#2C497F" }}
               />
             }
             text={"Manage Attendance"}
