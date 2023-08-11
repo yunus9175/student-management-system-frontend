@@ -47,21 +47,21 @@ const BoxWrapper = ({
             height: "100%",
             transition: "all .85s ease-in-out",
             opacity: 0.92,
-            backgroundColor: "#292",
+            backgroundColor: "#2C497F",
           }}
         >
-          <Container component="main" maxWidth={maxWidth}>
+          <Container component="main" maxWidth={maxWidth} sx={{ pl: 1, pr: 1 }}>
             <CssBaseline />
             <Paper
               elevation={0}
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                alignItems:"center",
-                padding: "25px",
+                alignItems: "center",
+                padding: "24px 16px",
                 boxShadow: "0px 0px 16px 9px rgba(0, 0, 0, 0.07)",
                 background: "rgba(255, 255, 255, .13)",
-                opacity: 0.92,
+                opacity: 1,
               }}
             >
               <Typography

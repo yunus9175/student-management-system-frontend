@@ -93,6 +93,7 @@ const TitleBox = ({ icon, text, data, fileName, id }) => {
       sx={{
         p: "10px",
         mb: 2,
+        mt:1,
         background: Dark00FF(cookies),
       }}
     >

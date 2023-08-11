@@ -89,7 +89,7 @@ export default function SignIn() {
         setFormData={setFormData}
         cookies={cookies}
       />
-      <CustomButton text={"Submit"} loading={loading} />
+      <CustomButton text={"LOG IN"} loading={loading} />
     </BoxWrapper>
   );
 }

@@ -11,16 +11,16 @@ const CustomButton = ({ text, loading }) => {
         mt: 1,
         width: "100%",
         textTransform: "capitalize",
-        background: gradientBackground("#1976D2"),
+        background: gradientBackground("#ED6A5E"),
         color: "#fff",
         borderColor: "#fff",
         ":hover": {
           color: "#fff",
           borderColor: "#fff",
-          background: gradientBackground("#1976D2"),
+          background: gradientBackground("#ED6A5E"),
         },
         ":disabled": {
-          background: gradientBackground("#1976D2"),
+          background: gradientBackground("#ED6A5E"),
         },
       }}
       disabled={loading}

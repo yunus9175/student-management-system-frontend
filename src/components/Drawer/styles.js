@@ -113,11 +113,11 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       pb: 0,
     },
     appBar = {
-      background:"#292929",
+      background: cookies.theme === "dark" ? "#292929" : "#1976D2",
       boxShadow: "none",
     },
     toolbarIconBtn = {
-      marginRight: matches ?5:1,
+      marginRight: matches ? 5 : 1,
       color: "#fff",
       ...(open && { display: "none" }),
     },
@@ -125,8 +125,8 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       color: "#fff",
     },
     toolbarIconBtnAvatar = {
-      width: matches ?30:24,
-      height: matches ?30:24,
+      width: matches ? 30 : 24,
+      height: matches ? 30 : 24,
 
       color: "#fff",
     },
@@ -137,7 +137,7 @@ export const DrawerStyle = (cookies, matches, upDown, open) => {
       justifyContent: "space-between",
     },
     titleTypo = {
-      color:  "#fff",
+      color: "#fff",
       fontSize: matches ? "24px" : "20px",
     },
     childBox1 = {

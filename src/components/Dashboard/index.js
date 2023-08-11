@@ -10,6 +10,7 @@ import {
   RecentActors,
   Celebration,
   Sms,
+  Person
 } from "@mui/icons-material/";
 import CardList from "./DashboardSubComp/CardList";
 import ProfileSection from "./DashboardSubComp/ProfileSection";
@@ -118,6 +119,11 @@ const Dashboard = () => {
               removeCookie={removeCookie}
               cookies={cookies}
               matches={matches}
+              bgColor={"#1976D2"}
+              title={"Your profile details"}
+              icon={<Person sx={{ mr: 1 }} />}
+              loading={loading}
+              userData={userData}
             />
             <UserDataList
               cookies={cookies}

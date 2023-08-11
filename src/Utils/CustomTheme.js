@@ -55,7 +55,7 @@ const CustomTheme = ({ children }) => {
                 background: "rgba(255, 255, 255, 0.25)",
                 border: "1px solid",
                 borderRadius: 1,
-                borderColor: colorCondition(), // cha
+                borderColor: colorCondition(),
               },
             },
             "& .MuiOutlinedInput-root.Mui-disabled": {
@@ -97,7 +97,7 @@ const CustomTheme = ({ children }) => {
                 transition:
                   "transform 0.35s cubic-bezier(0.36, 1, 0.62, 0.98) 0.085s, opacity 0.3s ease-in-out 0.2s, background 0.15s ease-in-out, border 0.3s ease-in-out",
                 opacity: 1,
-                color: "#fff",
+                color: dark ? colorCondition() : "#4f4f4f!important",
                 fontSize: 16,
                 padding: "14px 10px",
                 background: "rgba(255, 255, 255, 0.25)",
@@ -107,16 +107,16 @@ const CustomTheme = ({ children }) => {
               },
             },
             "& .MuiOutlinedInput-root:hover fieldset": {
-              borderColor: "#fff",
+              borderColor: dark ? colorCondition() : "#B5B5B5",
             },
             "& .MuiOutlinedInput-input": {
-              color: "#fff",
+              color: dark ? colorCondition() : "#4f4f4f!important",
             },
             "& .MuiInputLabel-root": {
-              color: "#fff",
+              color: dark ? colorCondition() : "#4f4f4f!important",
             },
             "& .MuiInputLabel-root.Mui-focused": {
-              color: "#fff",
+              color: dark ? colorCondition() : "#4f4f4f!important",
             },
           },
         },
@@ -131,6 +131,7 @@ const CustomTheme = ({ children }) => {
           },
         },
       },
+
       MuiPaper: {
         styleOverrides: {
           root: {
@@ -213,7 +214,6 @@ const CustomTheme = ({ children }) => {
             marginBottom: 0,
             textTransform: "uppercase",
             cursor: "pointer",
-            border: "none",
             borderRadius: 2,
             background: "#1976D2",
             "&:hover": {
